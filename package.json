@@ -18,5 +18,14 @@
   "bugs": {
     "url": "https://github.com/klkirstyleeskl/javaScript_project_2019/issues"
   },
-  "homepage": "https://github.com/klkirstyleeskl/javaScript_project_2019#readme"
+  "homepage": "https://github.com/klkirstyleeskl/javaScript_project_2019#readme",
+  "devDependencies": {
+    "webpack": "^4.29.0",
+    "webpack-cli": "^3.2.1"
+  },
+  "dependencies": {
+    "express": "^4.16.4",
+    "mongodb": "^3.1.13",
+    "nodemon": "^1.18.9"
+  }
 }
