@@ -1,0 +1,22 @@
+{
+  "name": "javascript_project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/server.js",
+    "server:dev": "nodemon server/server.js",
+    "build": "webpack -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/klkirstyleeskl/javaScript_project_2019.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/klkirstyleeskl/javaScript_project_2019/issues"
+  },
+  "homepage": "https://github.com/klkirstyleeskl/javaScript_project_2019#readme"
+}
