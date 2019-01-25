@@ -1,7 +1,6 @@
 {
   "name": "javascript_project",
   "version": "1.0.0",
-  "description": "",
   "main": "webpack.config.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -28,5 +27,6 @@
     "express": "^4.16.4",
     "mongodb": "^3.1.13",
     "nodemon": "^1.18.9"
-  }
+  },
+  "description": ""
 }
