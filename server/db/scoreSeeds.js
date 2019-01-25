@@ -1,4 +1,4 @@
-use scoreBoard;
+use countdown;
 db.dropDatabase();
 
 db.scores.insertMany([
