@@ -23,19 +23,36 @@ const createRouter = function (collection) {
     .findOne({_id: ObjectID(id) })
     .then((docs)  => res.json(docs))
     .catch((err) => {
-      console.error(err);
+      console.err(err);
       res.status(500);
-      res.json({ status: 500, error: err  });
+      res.json({ status: 500, error: err})
     });
   });
 
+  router.delete('/:id', (req, res) => {
+      const id = req.params.id;
+      collection
+        .deleteOne({ _id: ObjectID(id) })
+        .then(() => collection.find().toArray())
+        .then((docs) => res.json(docs))
+        .catch((err) => {
+          console.error(err);
+          res.status(500);
+          res.json({ status: 500, error: err });
+        });
+    });
+
+  router.post('/', (req, res) => {
+    const newData = req.body;
+    collection
+      .insertOne(newData)
+      .then(() => collection.find().toArray())
+      .then((docs) => res.json(docs));
+  });
 
 
+return router;
 
-  return router
-
-
-}
-
+};
 
 module.exports = createRouter;
