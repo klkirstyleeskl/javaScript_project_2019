@@ -1,4 +1,5 @@
 body {
+  text-align: center;
 }
 
 #clock-wrapper {
@@ -54,6 +55,12 @@ body {
   animation: rotate 30s linear;
   animation-fill-mode: forwards;
   /* animation: fill 7s linear infinite; */
+}
+
+#start-button {
+  grid-area: 2/3/2/3;
+  text-align: center;
+  margin-top: 20px;
 }
 
 #div2 {
