@@ -52,9 +52,8 @@ body {
 }
 
 .seconds-container {
-  animation: rotate 30s linear;
+  animation: rotate 5s linear;
   animation-fill-mode: forwards;
-  /* animation: fill 7s linear infinite; */
 }
 
 #start-button {

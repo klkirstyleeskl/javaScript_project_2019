@@ -1,4 +1,6 @@
-console.log('JavaScript Loaded');
+const WordInputFormView = require('./views/word_input_form_view.js');
+
+
 document.addEventListener('DOMContentLoaded', () => {
 
   const letters = document.querySelectorAll('h2');
@@ -13,6 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
     letter.textContent = alphabet[getRandomInt(26)];
   })
 
-  console.log(letters);
+// Selects the word input form, targets the inputted word and publishes.
+  const wordInputForm = document.querySelector('#word-submit');
+  const wordInputFormView = new WordInputFormView(wordInputForm);
+  wordInputFormView.setupEventListener();
 
 });
