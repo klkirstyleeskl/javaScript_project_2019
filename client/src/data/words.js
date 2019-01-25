@@ -6,6 +6,21 @@ Words.prototype.isWord = function(word){
   return this.wordlist.includes(word);
 }
 
+Words.prototype.isInSelection = function(wordPlayer,letterSelection){
+  const wordPlayerArray = wordPlayer.split('');
+  const letterSelectionArray = letterSelection.split('');
+
+  return wordPlayerArray.every( (letter) => {
+    if (letterSelectionArray.includes(letter)){
+      letterSelectionArray.splice(letterSelectionArray.indexOf(letter),1);
+      return true
+    } else {
+      return false
+    }
+  })
+
+}
+
 Words.prototype.loadWords = function(){
 
 const words = [
