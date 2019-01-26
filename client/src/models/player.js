@@ -12,16 +12,13 @@ const Player = function(name, score) {
 Player.prototype.bindEvents = function () {
   PubSub.subscribe('PlayerInputFormView:submitted-player', (evt) => {
     console.dir(evt.detail);
+    this.addPlayer(evt.detail);
   })
 };
 
 Player.prototype.addPlayer = function (newPlayer) {
   this.request
     .post(newPlayer)
-    .then((listItems) => {
-      this.items = listItems;
-      PubSub.publish('BucketList:list-ready', this.items);
-    })
     .catch((err) => console.error(err));
 };
 
