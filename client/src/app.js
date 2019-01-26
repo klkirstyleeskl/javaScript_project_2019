@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const showLetters = new ShowLettersView();
   showLetters.showLetters();
 
-// Selects the word input form, targets the inputted word and publishes.
+// Selects the word input form, targets the submitted word and then publishes it.
   const wordInputForm = document.querySelector('#word-submit');
   const wordInputFormView = new WordInputFormView(wordInputForm);
   wordInputFormView.setupEventListener();
