@@ -7,6 +7,8 @@ const ShowLettersView = function() {
 };
 
 
+
+
 // Takes in the random letters from the Letters model and displays them in the
 // letters divs.
 ShowLettersView.prototype.showLetters = function () {
@@ -17,9 +19,11 @@ ShowLettersView.prototype.showLetters = function () {
   letterElements.forEach((letterElement) => {
     letterElement.textContent = lettersToShow.pop();
   });
-  PubSub.publish('ShowLettersView:lettersToShow', this.lettersToShow);
 
 };
+
+
+
 
 
 module.exports = ShowLettersView;

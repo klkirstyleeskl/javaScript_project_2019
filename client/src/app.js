@@ -14,6 +14,9 @@ const PlayerView = require('./views/player_view.js');
 
 document.addEventListener('DOMContentLoaded', () => {
 
+  const startButton = new StartButton();
+  startButton.startGame();
+
   const player = new Player();
   player.bindEvents();
 
@@ -28,22 +31,18 @@ document.addEventListener('DOMContentLoaded', () => {
   player1InputFormView.bindEvents();
   player2InputFormView.bindEvents();
 
-// Selects the word input form, targets the submitted word and then publishes it.
+  //Creates a new input form and and sends the results to the word checkers
   const wordInputForm = document.querySelector('#word-submit');
   const wordInputFormView = new WordInputFormView(wordInputForm);
   wordInputFormView.setupEventListener();
+
+  // Displays new random letters on shuffle letters button click.
+  const shuffleLettersButton = new ShuffleLettersButton();
+  shuffleLettersButton.shuffleLetters();
 
   //Generates a new word checker object and listens for the channel relating to when a word is submitted
   const words = new Words();
   words.loadWords();
   words.bindEvents();
-
-  const startButton = new StartButton();
-  startButton.startGame();
-
-// Displays new random letters on shuffle letters button click.
-  const shuffleLettersButton = new ShuffleLettersButton();
-  shuffleLettersButton.shuffleLetters();
-
 
 });

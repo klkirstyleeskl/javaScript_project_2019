@@ -2,27 +2,29 @@ const PubSub = require('../helpers/pub_sub.js')
 
 const Words = function (){
   this.wordlist = []
+  this.word = ""
 }
 
 Words.prototype.bindEvents = function(){
+
+
   PubSub.subscribe('WordInputFormView:submitted-word', (event) =>{
     const wordToCheck = event.detail;
-    const isWordInDictionary = this.isWord(wordToCheck);
+    this.word = wordToCheck;
+    const isWordInDictionary = this.isWord(this.word);
     //Once a view has been created the log below will be returned to that view.
     console.log(`Is ${wordToCheck} in the dictionary?:   ${isWordInDictionary}`);
   });
 
-  PubSub.subscribe('ShowLettersView:lettersToShow', (event) =>{
-      const selectionToCheck = event.detail;
-      PubSub.subscribe('WordInputFormView:submitted-word', (event) =>{
-        const wordToCheck = event.detail;
-        const isWordInSelection = this.isInSelection(wordToCheck, selectionToCheck)
+  PubSub.subscribe('WordInputFormView:submitted-word-and-selection', (event) =>{
+      const checkArray = event.detail;
+        const isWordInSelection = this.isInSelection(checkArray[0], checkArray[1])
         //Once a view has been created the log below will be returned in that view.
-        console.log(`Is ${wordToCheck} in the selection?:  ${isWordInSelection}`)
-      })
-  });
+        console.log(`Is ${checkArray[0]} in the selection?:  ${isWordInSelection}`)
+        const bestWords = this.bestWords(checkArray[1]);
+        console.log(`The longest words available are: ${bestWords}`);
 
-
+      });
 }
 
 Words.prototype.isWord = function(word){
@@ -42,6 +44,31 @@ Words.prototype.isInSelection = function(wordPlayer,letterSelection){
     }
   })
 
+}
+
+Words.prototype.bestWords = function(letterSelection){
+  const selectionArray = letterSelection.split('');
+  const availableWords = [];
+  this.wordlist.forEach( (word) => {
+    if (this.isInSelection(word,letterSelection)) {
+      availableWords.push(word);
+    }
+
+
+  });
+  let bestWords = [];
+  maxLengthFound = false;
+  length = 9;
+  while (!maxLengthFound){
+    bestWords = availableWords.filter( (word) => {
+      return word.length === length;
+    })
+    if (bestWords.length){
+      return bestWords;
+    } else {
+      length -= 1;
+    }
+  }
 }
 
 Words.prototype.loadWords = function(){
