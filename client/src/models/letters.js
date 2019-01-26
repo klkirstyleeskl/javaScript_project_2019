@@ -30,7 +30,7 @@ Letters.prototype.getVowels() = function() {
     "U":4
   }
   return vowels
-}
+};
 
 Letters.prototype.getConsonants() = function() {
   const constonants = {
