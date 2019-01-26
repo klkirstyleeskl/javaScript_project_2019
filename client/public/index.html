@@ -7,46 +7,54 @@
     <link rel="stylesheet" href="./css/main.css">
   </head>
   <body>
+
     <h1>Countdown</h1>
 
     <div id="clock-wrapper">
-    <div id="div1"></div>
+<!-- Clock element. -->
+      <div id="div1"></div>
+      <div class="clock">
+        <div class="seconds-container">
+          <div class="seconds"></div>
+        </div>
+      </div>
 
-    <div class="clock">
-      <div class="seconds-container">
-        <div class="seconds"></div>
+<!-- Start clock button. -->
+      <div id="start-button">
+        <button type="submit" name="button">Ready Go!</button>
+      </div>
+
+<!-- Letter elements. -->
+      <div id="div2">
+        <div id="letter1" class="letters"><h2></h2></div>
+        <div id="letter2" class="letters"><h2></h2></div>
+        <div id="letter3" class="letters"><h2></h2></div>
+        <div id="letter4" class="letters"><h2></h2></div>
+        <div id="letter5" class="letters"><h2></h2></div>
+        <div id="letter6" class="letters"><h2></h2></div>
+        <div id="letter7" class="letters"><h2></h2></div>
+        <div id="letter8" class="letters"><h2></h2></div>
+        <div id="letter9" class="letters"><h2></h2></div>
       </div>
     </div>
 
-    <div id="start-button">
-      <button type="submit" name="button">Ready Go!</button>
+<!-- Name input. -->
+    <div>
+      <form id="name-submit" method="post">
+        <label for="name">Submit your name</label>
+        <input type="text" id="name">
+        <input type="submit" value="save">
+      </form>
     </div>
 
-    <div id="div2">
-      <div id="letter1" class="letters"><h2></h2></div>
-      <div id="letter2" class="letters"><h2></h2></div>
-      <div id="letter3" class="letters"><h2></h2></div>
-      <div id="letter4" class="letters"><h2></h2></div>
-      <div id="letter5" class="letters"><h2></h2></div>
-      <div id="letter6" class="letters"><h2></h2></div>
-      <div id="letter7" class="letters"><h2></h2></div>
-      <div id="letter8" class="letters"><h2></h2></div>
-      <div id="letter9" class="letters"><h2></h2></div>
-    </div>
-    </div>
+<!-- Word submit. -->
     <div>
-      <form  id= "name-submit" method="post">
-          <label for="name">Submit your name</label>
-          <input type="text" id="name">
-          <input type= "submit" value="save">
+      <form id="word-submit">
+        <label for="word">Submit your word</label>
+        <input type="text" id="word">
+        <input type="submit" value="save">
       </form>
     </div>
-    <div>
-      <form  id="word-submit">
-          <label for="word">Submit your word</label>
-          <input type="text" id="word">
-          <input type= "submit" value="save">
-      </form>
-    </div>
+
   </body>
 </html>
