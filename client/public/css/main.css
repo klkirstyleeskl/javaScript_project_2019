@@ -4,27 +4,30 @@ body {
 
 #clock-wrapper {
   display: grid;
-  grid-template-columns: 1fr 1fr 300px 1fr 1fr;
-  grid-template-rows: 300px 50px 86.22px;
+  grid-template-columns: 1fr 1fr 350px 1fr 1fr;
+  grid-template-rows: 87.5px 87.5px 87.5px 87.5px 50px 86.22px;
 
 }
 
 #div1 {
-  grid-area: 1/3/1/3;
+  grid-area: 1/3/5/3;
   height: 100%;
   width: 100%;
-  background: url('http://www.clker.com/cliparts/k/u/9/J/q/a/clock-face-no-hands-md.png');
+  background-image: url('http://www.clker.com/cliparts/k/u/9/J/q/a/clock-face-no-hands-md.png');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .clock {
-  grid-area: 1/3/1/3;
+  grid-area: 1/3/5/3;
   border: 10px solid rgb(31, 113, 244);
+  box-shadow: 0px 0px 10px 6px rgba(31, 113, 244, 1);
   border-radius: 50%;
   background-size: 100%;
-  height: 94%;
-  width: 94%;
+  height: 95%;
+  width: 95%;
   position: relative;
-  z-index: 999;
+  /* z-index: 999; */
 }
 
 .seconds-container {
@@ -37,12 +40,13 @@ body {
 }
 
 .seconds {
-  background: black;
-  height: 50%;
-  left: 49%;
-  position: absolute;
-  transform-origin: 50% 100%;
-  width: 2.5%;
+  background-image: url('clockhand.png');
+  height: 65%;
+  right: 43.5%;
+  bottom: 10%;
+  position: relative;
+  transform-origin: center;
+  /* width: 50%; */
 }
 
 .seconds-container {
@@ -57,21 +61,45 @@ body {
 }
 
 #start-button {
-  grid-area: 2/3/2/3;
+  grid-area: 5/3/5/3;
   text-align: center;
   margin: 10px 0;
+}
+
+#player1-submit {
+  grid-area: 4/1/4/3;
+}
+
+#player1 {
+  grid-area: 5/1/5/1;
+}
+
+#player2 {
+  grid-area: 5/5/5/5;
+}
+
+#player2-submit {
+  grid-area: 4/4/4/6;
 }
 
 #div2 {
   display: flex;
   flex-direction: row;
-  grid-area: 3/2/3/5;
+  grid-area: 6/2/6/5;
   border: 3px solid rgb(31, 113, 244);
 }
 
 #shuffle-letters {
-  grid-area: 3/5/3/5;
-
+  grid-area: 6/5/6/5;
+  height: 50px;
+  width: 100px;
+  border-radius: 8px;
+  border: none;
+  position: relative;
+  left: 10px;
+  align-self: center;
+  background-color: rgb(31, 113, 244);
+  color: white;
 }
 
 .letters {

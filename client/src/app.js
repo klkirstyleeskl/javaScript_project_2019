@@ -9,6 +9,7 @@ const StartButton = require('./models/start_button.js');
 
 const PlayerInputFormView = require('./views/player_input_form_view.js');
 const Player = require('./models/player.js');
+const PlayerView = require('./views/player_view.js');
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -16,9 +17,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const player = new Player();
   player.bindEvents();
 
-  const playerInputForm = document.querySelector('#name-submit',)
-  const playerInputFormView = new PlayerInputFormView(playerInputForm);
-  playerInputFormView.bindEvents();
+  const playerView = new PlayerView();
+  playerView.displayPlayer1();
+  playerView.displayPlayer2();
+
+  const player1InputForm = document.querySelector('#player1-submit');
+  const player2InputForm = document.querySelector('#player2-submit');
+  const player1InputFormView = new PlayerInputFormView(player1InputForm);
+  const player2InputFormView = new PlayerInputFormView(player2InputForm);
+  player1InputFormView.bindEvents();
+  player2InputFormView.bindEvents();
 
 // Selects the word input form, targets the submitted word and then publishes it.
   const wordInputForm = document.querySelector('#word-submit');
