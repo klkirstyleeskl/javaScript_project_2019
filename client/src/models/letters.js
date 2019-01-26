@@ -1,4 +1,3 @@
-const PubSub = require('../helpers/pub_sub.js');
 
 
 const Letters = function() {
@@ -10,7 +9,6 @@ const Letters = function() {
 
 // Returns an array of 9 random letters.
 Letters.prototype.getRandomLetters = function() {
-  // const alphabet = ['A','B','C','D','E','F','G','H','I','J','H','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
 
   //Array to determine which letter type (consonant or vowel) should be randomly chosen
   //Later on the letter type will be determined by button clicks rather than the array
@@ -24,13 +22,6 @@ Letters.prototype.getRandomLetters = function() {
     }
   });
 
-  // for ( i = 0; i < 9; i++) {
-  //   function getRandomInt() {
-  //     return Math.floor(Math.random() * 26);
-  //   };
-  //   this.letters.push(alphabet[getRandomInt()]);
-  // };
-  // console.log(this.letters);
   return this.letters;
 };
 
