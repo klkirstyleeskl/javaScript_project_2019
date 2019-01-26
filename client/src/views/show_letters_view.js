@@ -8,7 +8,7 @@ const ShowLettersView = function() {
 
 
 // Takes in the random letters from the Letters model and displays them in the
-// letters div.
+// letters divs.
 ShowLettersView.prototype.showLetters = function () {
   const letters = new Letters();
   const lettersToShow = letters.getRandomLetters();

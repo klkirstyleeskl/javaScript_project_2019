@@ -45,21 +45,21 @@ body {
   width: 2.5%;
 }
 
+.seconds-container {
+  animation: rotate 30s linear;
+  animation-fill-mode: forwards;
+}
+
 @keyframes rotate {
   100% {
     transform: rotateZ(180deg);
   }
 }
 
-.seconds-container {
-  animation: rotate 5s linear;
-  animation-fill-mode: forwards;
-}
-
 #start-button {
   grid-area: 2/3/2/3;
   text-align: center;
-  margin-top: 20px;
+  margin: 10px 0;
 }
 
 #div2 {
@@ -67,6 +67,11 @@ body {
   flex-direction: row;
   grid-area: 3/2/3/5;
   border: 3px solid rgb(31, 113, 244);
+}
+
+#shuffle-letters {
+  grid-area: 3/5/3/5;
+
 }
 
 .letters {
