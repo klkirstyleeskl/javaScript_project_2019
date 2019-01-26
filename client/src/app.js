@@ -10,25 +10,21 @@ const StartButton = require('./models/start_button.js');
 
 document.addEventListener('DOMContentLoaded', () => {
 
+  const startButton = new StartButton();
+  startButton.startGame();
 
-// Selects the word input form, targets the submitted word and then publishes it.
+  //Creates a new input form and and sends the results to the word checkers
   const wordInputForm = document.querySelector('#word-submit');
   const wordInputFormView = new WordInputFormView(wordInputForm);
   wordInputFormView.setupEventListener();
 
+  // Displays new random letters on shuffle letters button click.
+  const shuffleLettersButton = new ShuffleLettersButton();
+  shuffleLettersButton.shuffleLetters();
 
   //Generates a new word checker object and listens for the channel relating to when a word is submitted
   const words = new Words();
   words.loadWords();
   words.bindEvents();
-
-
-  const startButton = new StartButton();
-  startButton.startGame();
-
-// Displays new random letters on shuffle letters button click.
-  const shuffleLettersButton = new ShuffleLettersButton();
-  shuffleLettersButton.shuffleLetters();
-
 
 });

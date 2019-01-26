@@ -1,19 +1,24 @@
 const ShowLettersView = require('../views/show_letters_view.js');
+const PubSub = require('../helpers/pub_sub.js');
 
-
-const SuffleLettersButton = function() {
-
+const ShuffleLettersButton = function() {
+  this.shuffledLetterString = ""
 };
 
-
 // Handles the click event on the shuffle letters button.
-SuffleLettersButton.prototype.shuffleLetters = function () {
+ShuffleLettersButton.prototype.shuffleLetters = function () {
   const shuffleLettersButton = document.querySelector('#shuffle-letters');
+
+  const showLettersView = new ShowLettersView();
+  showLettersView.showLetters();
+  this.shuffledLetterString = showLettersView.lettersToShow;
+  PubSub.publish('ShuffleLettersButton: generated-selection', this.shuffledLetterString);
+
+
   shuffleLettersButton.addEventListener('click', function() {
-    const showLettersView = new ShowLettersView();
-    showLettersView.showLetters();
+    location.reload();
   })
 };
 
 
-module.exports = SuffleLettersButton;
+module.exports = ShuffleLettersButton;
