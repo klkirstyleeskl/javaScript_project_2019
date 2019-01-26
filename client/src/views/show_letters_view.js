@@ -3,7 +3,7 @@ const Letters = require('../models/letters.js');
 
 
 const ShowLettersView = function() {
-
+  this.lettersToShow = ""
 };
 
 
@@ -12,10 +12,13 @@ const ShowLettersView = function() {
 ShowLettersView.prototype.showLetters = function () {
   const letters = new Letters();
   const lettersToShow = letters.getRandomLetters();
+  this.lettersToShow = lettersToShow.join('');
   const letterElements = document.querySelectorAll('h2');
   letterElements.forEach((letterElement) => {
     letterElement.textContent = lettersToShow.pop();
   });
+  PubSub.publish('ShowLettersView:lettersToShow', this.lettersToShow);
+
 };
 
 

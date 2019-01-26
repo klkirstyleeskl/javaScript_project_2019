@@ -9,8 +9,20 @@ Words.prototype.bindEvents = function(){
     const wordToCheck = event.detail;
     const isWordInDictionary = this.isWord(wordToCheck);
     //Once a view has been created the log below will be returned to that view.
-    console.log(`${wordToCheck} = ${isWordInDictionary}`);
-  })
+    console.log(`Is ${wordToCheck} in the dictionary?:   ${isWordInDictionary}`);
+  });
+
+  PubSub.subscribe('ShowLettersView:lettersToShow', (event) =>{
+      const selectionToCheck = event.detail;
+      PubSub.subscribe('WordInputFormView:submitted-word', (event) =>{
+        const wordToCheck = event.detail;
+        const isWordInSelection = this.isInSelection(wordToCheck, selectionToCheck)
+        //Once a view has been created the log below will be returned in that view.
+        console.log(`Is ${wordToCheck} in the selection?:  ${isWordInSelection}`)
+      })
+  });
+
+
 }
 
 Words.prototype.isWord = function(word){
@@ -18,8 +30,8 @@ Words.prototype.isWord = function(word){
 }
 
 Words.prototype.isInSelection = function(wordPlayer,letterSelection){
-  const wordPlayerArray = wordPlayer.split('');
-  const letterSelectionArray = letterSelection.split('');
+  const wordPlayerArray = wordPlayer.toLowerCase().split('');
+  const letterSelectionArray = letterSelection.toLowerCase().split('');
 
   return wordPlayerArray.every( (letter) => {
     if (letterSelectionArray.includes(letter)){
