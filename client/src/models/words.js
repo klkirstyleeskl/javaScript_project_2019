@@ -1,5 +1,16 @@
+const PubSub = require('../helpers/pub_sub.js')
+
 const Words = function (){
   this.wordlist = []
+}
+
+Words.prototype.bindEvents = function(){
+  PubSub.subscribe('WordInputFormView:submitted-word', (event) =>{
+    const wordToCheck = event.detail;
+    const isWordInDictionary = this.isWord(wordToCheck);
+    //Once a view has been created the log below will be returned to that view.
+    console.log(`${wordToCheck} = ${isWordInDictionary}`);
+  })
 }
 
 Words.prototype.isWord = function(word){
