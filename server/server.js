@@ -13,17 +13,13 @@ app.use(parser.json());
 MongoClient.connect('mongodb://localhost:27017')
   .then((client) => {
     const db = client.db('countdown');
-    const scoresCollection = db.collection('scores');
-    const scoresRouter = createRouter(scoresCollection);
-    app.use('/api/scores', scoresRouter);
-
-    
+    const leaderBoardCollection = db.collection('leaderBoard');
+    const leaderBoardRouter = createRouter(leaderBoardCollection);
+    app.use('/api/leaderBoard', leaderBoardRouter);
   })
   .catch((err) => {
     console.error(err);
   });
-
-
 
 app.listen(3000, function () {
   console.log(`Listening on port ${ this.address().port }`);
