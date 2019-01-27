@@ -18,7 +18,15 @@
       </div>
 
 <!-- Start clock button. -->
-      <button id="start-button">Ready Go!</button>
+      <script>
+        function play(){
+          const audio = document.querySelector('#audio');
+          audio.play();
+                 }
+      </script>
+      <button id="start-button" value="PLAY" onclick="play()">Ready Go!</button>
+      <!-- <input type="button" value="PLAY"  onclick="play()"> -->
+      <audio id="audio" src="Countdown - Clock Only.mp3" ></audio>
 
 <!-- Name input. -->
       <form id="player1-submit" class="name-input">

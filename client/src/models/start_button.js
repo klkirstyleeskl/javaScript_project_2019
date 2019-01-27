@@ -4,13 +4,16 @@ const StartButton = function() {
 
 };
 
-// Supposed to start the clock but not working yet !!
+
 StartButton.prototype.startGame = function () {
   const startButton = document.querySelector('#start-button');
+  const secondsHand = document.querySelector('.seconds-container');
   startButton.addEventListener('click', function() {
-    const secondsHand = document.querySelector('.seconds-container');
-    console.log('button clicked');
-  })
+    secondsHand.classList.remove('animate');
+    setTimeout(function() {
+      secondsHand.classList.add('animate');
+    }),1
+  });
 };
 
 

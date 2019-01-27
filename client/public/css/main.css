@@ -49,7 +49,7 @@ body {
   /* width: 50%; */
 }
 
-.seconds-container {
+.animate {
   animation: rotate 30s linear;
   animation-fill-mode: forwards;
 }
