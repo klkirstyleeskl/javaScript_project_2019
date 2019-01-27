@@ -1,4 +1,4 @@
-
+const PubSub = require('../helpers/pub_sub.js');
 
 const Letters = function() {
   this.letters = [];
@@ -23,6 +23,7 @@ Letters.prototype.getRandomLetters = function() {
   });
 
   return this.letters;
+  PubSub.publish('Letters: generated-selection', this.letters);
 };
 
 Letters.prototype.getVowels = function() {

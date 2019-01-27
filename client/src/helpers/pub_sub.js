@@ -7,6 +7,11 @@ const PubSub = {
   subscribe: function(channel, callback) {
     console.log(`Subscribed to channel: ${channel}`);
     document.addEventListener(channel, callback);
+  },
+
+  unsubscribe: function(channel, callback) {
+    console.log(`Unsubscribing from channel: ${channel}`);
+    document.removeEventListener(channel, callback);
   }
 };
 

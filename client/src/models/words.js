@@ -3,28 +3,31 @@ const PubSub = require('../helpers/pub_sub.js')
 const Words = function (){
   this.wordlist = []
   this.word = ""
+  this.selection = ""
+  this.round = ""
 }
 
 Words.prototype.bindEvents = function(){
 
-
-  PubSub.subscribe('WordInputFormView:submitted-word', (event) =>{
+  PubSub.subscribe(`WordInputFormView:submitted-word${this.round}`, (event) =>{
     const wordToCheck = event.detail;
     this.word = wordToCheck;
     const isWordInDictionary = this.isWord(this.word);
+
     //Once a view has been created the log below will be returned to that view.
-    console.log(`Is ${wordToCheck} in the dictionary?:   ${isWordInDictionary}`);
+    console.log(`Is ${this.word} in the dictionary?:   ${isWordInDictionary}`);
+    const isWordInSelection = this.isInSelection(this.word, this.selection)
+
+    //Once a view has been created the log below will be returned in that view.
+    console.log(`Is ${this.word} in the selection?:  ${isWordInSelection}`)
+
+    //Once a view has been created the log below will be returned in that view.
+    const bestWords = this.bestWords(this.selection);
+    console.log(`The longest words available are: ${bestWords}`);
+
+
   });
 
-  PubSub.subscribe('WordInputFormView:submitted-word-and-selection', (event) =>{
-      const checkArray = event.detail;
-        const isWordInSelection = this.isInSelection(checkArray[0], checkArray[1])
-        //Once a view has been created the log below will be returned in that view.
-        console.log(`Is ${checkArray[0]} in the selection?:  ${isWordInSelection}`)
-        const bestWords = this.bestWords(checkArray[1]);
-        console.log(`The longest words available are: ${bestWords}`);
-
-      });
 }
 
 Words.prototype.isWord = function(word){
