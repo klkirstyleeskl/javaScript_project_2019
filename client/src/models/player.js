@@ -11,14 +11,23 @@ const Player = function(name, score) {
 
 Player.prototype.bindEvents = function () {
   PubSub.subscribe('PlayerInputFormView:submitted-player', (evt) => {
-    console.dir(evt.detail);
     this.addPlayer(evt.detail);
   })
 };
 
 Player.prototype.addPlayer = function (newPlayer) {
   this.request
-    .post(newPlayer)
+    .get()
+    .then((players) => {
+      const names = players.map(player => player.name);
+      if (names.includes(newPlayer.name)) {
+        console.log('That player already exists!');
+      } else {
+        this.request
+          .post(newPlayer)
+          .catch((err) => console.error(err));
+      }
+    })
     .catch((err) => console.error(err));
 };
 
