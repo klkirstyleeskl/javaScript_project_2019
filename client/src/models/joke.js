@@ -10,11 +10,9 @@ Joke.prototype.getData = function () {
   request.get()
     .then((data) => {
       this.text = data.joke
-      console.log(this.text)
-    });
-}
-
-
-
+      PubSub.publish('Joke:joke-loaded', this.text);
+          console.log(this.text)
+      })
+};
 
 module.exports = Joke;

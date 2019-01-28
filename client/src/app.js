@@ -44,6 +44,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const joke = new Joke();
   joke.getData();
 
+  const jokeContainer = document.querySelector('#joke-container');
+  const jokeView = new JokeView(jokeContainer);
+  jokeView.bindEvents();
+
+  // const jokeButton = new JokeButton();
+  // joke.viewJoke();
+
+
 
 
   //Creates a new input form and and sends the results to the word checkers

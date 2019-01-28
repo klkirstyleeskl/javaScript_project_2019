@@ -2,12 +2,12 @@ const JokeButton = function () {
 
 };
 
+JokeButton.prototype.viewJoke = function () {
 const button = document.querySelector('#joke-button')
-button.addEventListener('click', handleButtonClick)
-console.log('button clicked');
+button.addEventListener('click', function() {
 
-
-const handleButtonClick = function () {
 }
+console.log('button clicked');
+};
 
 module.exports = JokeButton;
