@@ -7,9 +7,10 @@ const Joke = function (){
 
 Joke.prototype.getData = function () {
   const request = new RequestHelper('https://icanhazdadjoke.com/');
-    request.get((data) => {
-    this.text = data
-  })
+  request.get()
+    .then((data) => {
+      this.text = data
+    })
 }
 
 

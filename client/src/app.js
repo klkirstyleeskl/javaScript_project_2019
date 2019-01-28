@@ -40,6 +40,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const game = new Game();
   game.playCountdown();
 
+  const joke = new Joke();
+  joke.getData();
+
 
   //Creates a new input form and and sends the results to the word checkers
   // const wordInputForm = document.querySelector('#game-container');

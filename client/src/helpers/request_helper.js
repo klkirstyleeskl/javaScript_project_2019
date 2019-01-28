@@ -5,7 +5,11 @@ const RequestHelper = function(url) {
 
 RequestHelper.prototype.get = function(urlParam) {
   const url = urlParam ? `${this.url}/${urlParam}` : this.url;
-  return fetch(url)
+  console.log(url);
+  return fetch(url, {
+    method: 'GET',
+    headers: { 'Accept': 'application/json' }
+  })
     .then((response) => response.json())
     .catch((err) => console.error(err));
 };
