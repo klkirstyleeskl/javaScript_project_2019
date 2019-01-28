@@ -125,3 +125,9 @@ h2 {
   font-size: 70px;
   font-weight: normal;
 }
+
+#word-submit {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
