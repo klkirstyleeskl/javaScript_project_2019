@@ -12,6 +12,9 @@ const Player2InputFormView = require('./views/player2_input_form_view.js');
 const Player = require('./models/player.js');
 const PlayerView = require('./views/player_view.js');
 
+const Joke = require('./models/joke.js');
+
+
 const Game = require('./models/game.js')
 
 
