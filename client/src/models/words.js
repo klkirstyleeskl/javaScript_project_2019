@@ -2,70 +2,36 @@ const PubSub = require('../helpers/pub_sub.js')
 
 const Words = function (){
   this.wordlist = []
-  this.word1 = ""
-  this.word2 = ""
   this.selection = ""
   this.round = ""
-  this.word1Validity = ''
-  this.word2Validity = ''
+  this.validity = [];
 }
 
 Words.prototype.bindEvents = function(){
 
-  PubSub.subscribe(`LettersGameView:submitted-word-p1-round-${this.round}`, (event) =>{
-    const wordToCheck = event.detail;
-    this.word1 = wordToCheck;
-    const isWordInDictionary = this.isWord(this.word1);
+  for (let i = 0; i<2;i++){
+    PubSub.subscribe(`LettersGameView:submitted-word-p${i+1}-round-${this.round}`, (event) =>{
 
-    //Once a view has been created the log below will be returned to that view.
-    // console.log(`Is ${this.word1} in the dictionary?:   ${isWordInDictionary}`);
-    const isWordInSelection = this.isInSelection(this.word1, this.selection)
+      const wordToCheck = event.detail;
+      const isWordInDictionary = this.isWord(wordToCheck);
+      const isWordInSelection = this.isInSelection(wordToCheck, this.selection)
 
-    //Once a view has been created the log below will be returned in that view.
-    // console.log(`Is ${this.word1} in the selection?:  ${isWordInSelection}`)
+      if (isWordInDictionary && isWordInSelection) {
+        this.validity[i] = true;
+        console.log(`Word is valid, ${wordToCheck.length} Points`);
+      } else {
+        this.validity[i] = false;
+        console.log('Word is invalid!');
+      }
+      console.log(this.validity[i]);
 
-    //Once a view has been created the log below will be returned in that view.
-    // const bestWords = this.bestWords(this.selection);
-    // console.log(`The longest words available are: ${bestWords}`);
-    if (isWordInDictionary && isWordInSelection) {
-      this.word1Validity = true;
-      console.log(`Word is valid, ${this.word1.length} Points`);
-    } else {
-      this.word1Validity = false;
-      console.log('Word is invalid!');
-    }
-    console.log(this.word1Validity);
+    });
 
-  });
-
+  }
 
   PubSub.subscribe(`LettersGameView:submitted-word-p2-round-${this.round}`, (event) =>{
-    const wordToCheck = event.detail;
-    this.word2 = wordToCheck;
-    const isWordInDictionary = this.isWord(this.word2);
-
-    //Once a view has been created the log below will be returned to that view.
-    // console.log(`Is ${this.word2} in the dictionary?:   ${isWordInDictionary}`);
-    const isWordInSelection = this.isInSelection(this.word2, this.selection)
-
-    //Once a view has been created the log below will be returned in that view.
-    // console.log(`Is ${this.word2} in the selection?:  ${isWordInSelection}`)
-
-    if (isWordInDictionary && isWordInSelection) {
-      this.word2Validity = true;
-      console.log(`Word is valid, ${this.word2.length} Points`);
-    } else {
-      this.word2Validity = false;
-      console.log('Word is invalid!');
-    }
-    console.log(this.word2Validity);
-
-    //Once a view has been created the log below will be returned in that view.
-    const bestWords = this.bestWords(this.selection);
-    console.log(`The longest words available are: ${bestWords}`);
-
-
-  });
+    console.log(this.bestWords(this.selection));
+  })
 
 }
 

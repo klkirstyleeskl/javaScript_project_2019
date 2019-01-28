@@ -58,4 +58,8 @@ Numbers.prototype.generateNumber = function(){
   return number;
 }
 
+Numbers.prototype.bindEvents = function(){
+
+}
+
 module.exports = Numbers;

@@ -71,10 +71,6 @@ NumbersGameView.prototype.showNumbers = function () {
 // be checked against the selected letters and words array.
 NumbersGameView.prototype.setupEventListener = function () {
 
-  // PubSub.subscribe('Letters: generated-selection', (evt) => {
-
-      // const selection = evt.detail
-      // this.lettersToShow = evt.detail
       this.showNumbers();
       const round = this.round;
       let solution1;
@@ -102,9 +98,6 @@ NumbersGameView.prototype.setupEventListener = function () {
 
       });
 
-
-
-    // });
 };
 
 module.exports = NumbersGameView;
