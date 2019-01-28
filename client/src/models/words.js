@@ -6,41 +6,59 @@ const Words = function (){
   this.word2 = ""
   this.selection = ""
   this.round = ""
+  this.word1Validity = ''
+  this.word2Validity = ''
 }
 
 Words.prototype.bindEvents = function(){
 
-  PubSub.subscribe(`LettersGameView:submitted-word-p1${this.round}`, (event) =>{
+  PubSub.subscribe(`LettersGameView:submitted-word-p1-round-${this.round}`, (event) =>{
     const wordToCheck = event.detail;
     this.word1 = wordToCheck;
     const isWordInDictionary = this.isWord(this.word1);
 
     //Once a view has been created the log below will be returned to that view.
-    console.log(`Is ${this.word1} in the dictionary?:   ${isWordInDictionary}`);
+    // console.log(`Is ${this.word1} in the dictionary?:   ${isWordInDictionary}`);
     const isWordInSelection = this.isInSelection(this.word1, this.selection)
 
     //Once a view has been created the log below will be returned in that view.
-    console.log(`Is ${this.word1} in the selection?:  ${isWordInSelection}`)
+    // console.log(`Is ${this.word1} in the selection?:  ${isWordInSelection}`)
 
     //Once a view has been created the log below will be returned in that view.
     // const bestWords = this.bestWords(this.selection);
     // console.log(`The longest words available are: ${bestWords}`);
-
+    if (isWordInDictionary && isWordInSelection) {
+      this.word1Validity = true;
+      console.log(`Word is valid, ${this.word1.length} Points`);
+    } else {
+      this.word1Validity = false;
+      console.log('Word is invalid!');
+    }
+    console.log(this.word1Validity);
 
   });
 
 
-  PubSub.subscribe(`LettersGameView:submitted-word-p2${this.round}`, (event) =>{
+  PubSub.subscribe(`LettersGameView:submitted-word-p2-round-${this.round}`, (event) =>{
     const wordToCheck = event.detail;
     this.word2 = wordToCheck;
     const isWordInDictionary = this.isWord(this.word2);
 
     //Once a view has been created the log below will be returned to that view.
-    console.log(`Is ${this.word2} in the dictionary?:   ${isWordInDictionary}`);
+    // console.log(`Is ${this.word2} in the dictionary?:   ${isWordInDictionary}`);
     const isWordInSelection = this.isInSelection(this.word2, this.selection)
 
     //Once a view has been created the log below will be returned in that view.
-    console.log(`Is ${this.word2} in the selection?:  ${isWordInSelection}`)
+    // console.log(`Is ${this.word2} in the selection?:  ${isWordInSelection}`)
+
+    if (isWordInDictionary && isWordInSelection) {
+      this.word2Validity = true;
+      console.log(`Word is valid, ${this.word2.length} Points`);
+    } else {
+      this.word2Validity = false;
+      console.log('Word is invalid!');
+    }
+    console.log(this.word2Validity);
 
     //Once a view has been created the log below will be returned in that view.
     const bestWords = this.bestWords(this.selection);

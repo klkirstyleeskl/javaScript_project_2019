@@ -17,6 +17,9 @@ Game.prototype.playCountdown = function(){
   const letters = new Letters();
   const rounds = ["L","L","L","L"];
   let lettersGameView;
+  let wordInputForm1
+  let wordInputForm2
+  let inputDiv;
   // const startButton = document.querySelector('#start-button');
   // startButton.addEventListener('click', function() {
 
@@ -24,24 +27,55 @@ Game.prototype.playCountdown = function(){
   button.addEventListener('click', function(event) {
 
       if (rounds[round] === "L") {
-
+        console.log('round loop');
         const selection = letters.getRandomLetters();
         words.selection = selection.join('');
         words.round = round;
 
         words.bindEvents();
 
+        inputDiv = document.querySelector('#word-submit');
+        inputDiv.innerHTML = ' ';
+        inputDiv.innerHTML = `
+        <form id="p1-word-submit">
+          <label for="word">Submit your word</label>
+          <input type="text" id="word" required>
+          <input type="submit" value="save">
+        </form>
+        <form id="p2-word-submit">
+          <label for="word">Submit your word</label>
+          <input type="text" id="word" required>
+          <input type="submit" value="save">
+        </form>`;
+
         //Generate the letters game view
-        const wordInputForm1 = document.querySelector("#p1-word-submit");
-        const wordInputForm2 = document.querySelector("#p2-word-submit");
+        wordInputForm1 = document.querySelector("#p1-word-submit");
+        wordInputForm2 = document.querySelector("#p2-word-submit");
         lettersGameView = new LettersGameView(wordInputForm1,wordInputForm2,selection,round);
         lettersGameView.setupEventListener();
       };
       round +=1;
-      lettersGameView = null;
-
-
-
+      // inputDiv = document.querySelector('#word-submit');
+      // wordInputForm1.removeEventListener('submit', function(event) {
+      //
+      //   event.preventDefault();
+      //   const form = event.target;
+      //   word1 = event.target.word.value;
+      //   form.reset();
+      //
+      // });
+      // wordInputForm2.removeEventListener('submit', function(event) {
+      //   console.log("registering submit event listener");
+      //   event.preventDefault();
+      //   const form = event.target;
+      //   word2 = event.target.word.value;
+      //
+      //   PubSub.publish('LettersGameView:submitted-word-p1', word1);
+      //   PubSub.publish('LettersGameView:submitted-word-p2', word2);
+      //
+      //   form.reset();
+      //
+      // });
     });
   };
 
