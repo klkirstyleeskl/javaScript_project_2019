@@ -1,8 +1,9 @@
 const PubSub = require('../helpers/pub_sub.js');
-const LettersGameView = require('../views/letters_game_view');
+const LettersGameView = require('../views/letters_game_view.js');
+const NumbersGameView = require('../views/numbers_game_view.js')
 const Letters = require('./letters.js');
-const Words = require('./words.js')
-
+const Words = require('./words.js');
+const Numbers = require('./numbers.js');
 const Game = function(container) {
   // this.container =
 }
@@ -14,9 +15,12 @@ Game.prototype.playCountdown = function(){
   const words = new Words();
   words.loadWords();
 
+  const numbers = new Numbers();
+
   const letters = new Letters();
   const rounds = ["L","L","L","L"];
   let lettersGameView;
+  let numbersGameView;
   // const startButton = document.querySelector('#start-button');
   // startButton.addEventListener('click', function() {
 
@@ -34,13 +38,22 @@ Game.prototype.playCountdown = function(){
         //Generate the letters game view
         const wordInputForm1 = document.querySelector("#p1-word-submit");
         const wordInputForm2 = document.querySelector("#p2-word-submit");
-        lettersGameView = new LettersGameView(wordInputForm1,wordInputForm2,selection,round);
+        lettersGameView = new LettersGameView(wordInputForm1,wordInputForm2,selection, round);
         lettersGameView.setupEventListener();
-      };
+
+
+      } else {
+
+        // const selection = numbers.selection;
+        // const target = numbers.target;
+        //
+        // numbersGameview = new NumbersGameView(selection, target, round);
+        // numbersGameView.showNumbers();
+
+      }
+
       round +=1;
       lettersGameView = null;
-
-
 
     });
   };
