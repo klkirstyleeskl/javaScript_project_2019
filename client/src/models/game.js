@@ -2,6 +2,7 @@ const PubSub = require('../helpers/pub_sub.js');
 const LettersGameView = require('../views/letters_game_view');
 const Letters = require('./letters.js');
 const Words = require('./words.js')
+const PlayerView = require('../views/player_view.js');
 
 const Game = function(container) {
   // this.container =
@@ -27,7 +28,6 @@ Game.prototype.playCountdown = function(){
   button.addEventListener('click', function(event) {
 
       if (rounds[round] === "L") {
-        console.log('round loop');
         const selection = letters.getRandomLetters();
         words.selection = selection.join('');
         words.round = round;
@@ -53,6 +53,7 @@ Game.prototype.playCountdown = function(){
         wordInputForm2 = document.querySelector("#p2-word-submit");
         lettersGameView = new LettersGameView(wordInputForm1,wordInputForm2,selection,round);
         lettersGameView.setupEventListener();
+
       };
       round +=1;
       // inputDiv = document.querySelector('#word-submit');

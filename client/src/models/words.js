@@ -17,16 +17,8 @@ Words.prototype.bindEvents = function(){
     this.word1 = wordToCheck;
     const isWordInDictionary = this.isWord(this.word1);
 
-    //Once a view has been created the log below will be returned to that view.
-    // console.log(`Is ${this.word1} in the dictionary?:   ${isWordInDictionary}`);
     const isWordInSelection = this.isInSelection(this.word1, this.selection)
 
-    //Once a view has been created the log below will be returned in that view.
-    // console.log(`Is ${this.word1} in the selection?:  ${isWordInSelection}`)
-
-    //Once a view has been created the log below will be returned in that view.
-    // const bestWords = this.bestWords(this.selection);
-    // console.log(`The longest words available are: ${bestWords}`);
     if (isWordInDictionary && isWordInSelection) {
       this.word1Validity = true;
       console.log(`Word is valid, ${this.word1.length} Points`);
@@ -44,12 +36,7 @@ Words.prototype.bindEvents = function(){
     this.word2 = wordToCheck;
     const isWordInDictionary = this.isWord(this.word2);
 
-    //Once a view has been created the log below will be returned to that view.
-    // console.log(`Is ${this.word2} in the dictionary?:   ${isWordInDictionary}`);
     const isWordInSelection = this.isInSelection(this.word2, this.selection)
-
-    //Once a view has been created the log below will be returned in that view.
-    // console.log(`Is ${this.word2} in the selection?:  ${isWordInSelection}`)
 
     if (isWordInDictionary && isWordInSelection) {
       this.word2Validity = true;
@@ -64,6 +51,16 @@ Words.prototype.bindEvents = function(){
     const bestWords = this.bestWords(this.selection);
     console.log(`The longest words available are: ${bestWords}`);
 
+    const winner = this.checkForWinner();
+    if (winner == 'player1') {
+      PubSub.publish('Words:word1-score', this.word1.length);
+    } else if (winner == 'player2') {
+      PubSub.publish('Words:word2-score', this.word2.length);
+    } else if (winner == 'draw-score') {
+      PubSub.publish('Words:word1-score', this.word1.length);
+      PubSub.publish('Words:word2-score', this.word2.length);
+    }
+    // PubSub.publish('Words:winner', winner);
 
   });
 
@@ -112,6 +109,18 @@ Words.prototype.bestWords = function(letterSelection){
     }
   }
 }
+
+Words.prototype.checkForWinner = function () {
+  if ((this.word1Validity === true) && ((this.word1.length > this.word2.length) || (this.word2Validity === false))) {
+    return 'player1';
+  } else if ((this.word2Validity === true) && ((this.word2.length > this.word1.length) || (this.word1Validity === false))) {
+    return 'player2';
+  } else if ((this.word1Validity === true) && (this.word2Validity === true) && (this.word2.length === this.word1.length)) {
+    return 'draw-score';
+  } else if ((this.word1Validity === false) && (this.word2Validity === false)) {
+    return 'draw-no-score';
+  }
+};
 
 Words.prototype.loadWords = function(){
 

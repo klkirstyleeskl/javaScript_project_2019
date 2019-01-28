@@ -42,7 +42,6 @@ LettersGameView.prototype.setupEventListener = function () {
       });
 
       this.element2.addEventListener('submit', function(event) {
-        console.log("registering submit event listener");
         event.preventDefault();
         const form = event.target;
         word2 = event.target.word.value;
