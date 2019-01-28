@@ -20,8 +20,6 @@ Game.prototype.playCountdown = function(){
   // const startButton = document.querySelector('#start-button');
   // startButton.addEventListener('click', function() {
 
-
-
   const button = document.querySelector('#start-button');
   button.addEventListener('click', function(event) {
 
@@ -34,8 +32,9 @@ Game.prototype.playCountdown = function(){
         words.bindEvents();
 
         //Generate the letters game view
-        const wordInputForm = document.querySelector("#word-submit");
-        lettersGameView = new LettersGameView(wordInputForm,selection,round);
+        const wordInputForm1 = document.querySelector("#p1-word-submit");
+        const wordInputForm2 = document.querySelector("#p2-word-submit");
+        lettersGameView = new LettersGameView(wordInputForm1,wordInputForm2,selection,round);
         lettersGameView.setupEventListener();
       };
       round +=1;

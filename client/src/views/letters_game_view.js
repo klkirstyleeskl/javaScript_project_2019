@@ -1,8 +1,9 @@
 const PubSub = require('../helpers/pub_sub.js');
 const Letters = require('../models/letters.js');
 
-const LettersGameView = function(wordInputElement, selection, round){
-  this.element = wordInputElement
+const LettersGameView = function(wordInputElement1,wordInputElement2, selection, round){
+  this.element1 = wordInputElement1
+  this.element2 = wordInputElement2
   this.lettersToShow = selection
   this.round = round
 }
@@ -27,17 +28,31 @@ LettersGameView.prototype.setupEventListener = function () {
       // this.lettersToShow = evt.detail
       this.showLetters();
       const round = this.round
+      let word1;
+      let word2;
 
-      this.element.addEventListener('submit', function(event) {
+      this.element1.addEventListener('submit', function(event) {
 
         event.preventDefault();
         const form = event.target;
-        const word = event.target.word.value;
-
-
-        PubSub.publish(`WordInputFormView:submitted-word${round}`, word);
+        word1 = event.target.word.value;
+        form.reset();
 
       });
+
+      this.element2.addEventListener('submit', function(event) {
+
+        event.preventDefault();
+        const form = event.target;
+        word2 = event.target.word.value;
+
+        PubSub.publish(`LettersGameView:submitted-word-p1${round}`, word1);
+        PubSub.publish(`LettersGameView:submitted-word-p2${round}`, word2);
+
+        form.reset();
+
+      });
+
 
 
     // });
