@@ -13,6 +13,7 @@ const Player = require('./models/player.js');
 const PlayerView = require('./views/player_view.js');
 
 const Joke = require('./models/joke.js');
+const JokeView = require('./views/joke_view.js');
 
 
 const Game = require('./models/game.js')
@@ -42,6 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const joke = new Joke();
   joke.getData();
+
 
 
   //Creates a new input form and and sends the results to the word checkers

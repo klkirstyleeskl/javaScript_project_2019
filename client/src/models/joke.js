@@ -9,9 +9,11 @@ Joke.prototype.getData = function () {
   const request = new RequestHelper('https://icanhazdadjoke.com/');
   request.get()
     .then((data) => {
-      this.text = data
-    })
+      this.text = data.joke
+      console.log(this.text)
+    });
 }
+
 
 
 
