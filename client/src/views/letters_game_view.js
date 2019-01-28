@@ -36,18 +36,18 @@ LettersGameView.prototype.setupEventListener = function () {
         event.preventDefault();
         const form = event.target;
         word1 = event.target.word.value;
+
         form.reset();
 
       });
 
       this.element2.addEventListener('submit', function(event) {
-
+        console.log("registering submit event listener");
         event.preventDefault();
         const form = event.target;
         word2 = event.target.word.value;
-
-        PubSub.publish(`LettersGameView:submitted-word-p1${round}`, word1);
-        PubSub.publish(`LettersGameView:submitted-word-p2${round}`, word2);
+        PubSub.publish(`LettersGameView:submitted-word-p1-round-${round}`, word1);
+        PubSub.publish(`LettersGameView:submitted-word-p2-round-${round}`, word2);
 
         form.reset();
 
@@ -58,6 +58,50 @@ LettersGameView.prototype.setupEventListener = function () {
     // });
 
 
+
+
+// };
+
+// LettersGameView.prototype.removeEventListener = function () {
+//
+//   // PubSub.subscribe('Letters: generated-selection', (evt) => {
+//
+//       // const selection = evt.detail
+//       // this.lettersToShow = evt.detail
+//       this.showLetters();
+//       const round = this.round
+//       let word1;
+//       let word2;
+//
+//       this.element1.addEventListener('submit', function(event) {
+//
+//         event.preventDefault();
+//         const form = event.target;
+//         word1 = event.target.word.value;
+//         form.reset();
+//
+//       });
+//
+//       this.element2.addEventListener('submit', function(event) {
+//         console.log("registering submit event listener");
+//         event.preventDefault();
+//         const form = event.target;
+//         word2 = event.target.word.value;
+//
+//         PubSub.publish('LettersGameView:submitted-word-p1', word1);
+//         PubSub.publish('LettersGameView:submitted-word-p2', word2);
+//
+//         form.reset();
+//
+//       });
+
+
+
+    // });
+
+
 };
+
+
 
 module.exports = LettersGameView;
