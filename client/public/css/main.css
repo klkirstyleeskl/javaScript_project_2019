@@ -41,9 +41,13 @@ body {
 
 .seconds {
   background-image: url('clockhand.png');
-  height: 65%;
+  background-size: 79%;
+  background-repeat: no-repeat;
+  background-position: 182px -4px;
+  height: 55%;
   right: 43.5%;
-  bottom: 10%;
+  /* top: 0px; */
+  bottom: 1%;
   position: relative;
   transform-origin: center;
   /* width: 50%; */
@@ -124,4 +128,10 @@ h2 {
   font-family: sans-serif;
   font-size: 70px;
   font-weight: normal;
+}
+
+#word-submit {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }

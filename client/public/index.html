@@ -32,12 +32,12 @@
 <!-- Name input. -->
       <form id="player1-submit" class="name-input">
         <label for="name">Player 1</label>
-        <input type="text" id="name">
+        <input type="text" id="name" required>
         <input type="submit" value="enter">
       </form>
       <form id="player2-submit" class="name-input">
         <label for="name">Player 2</label>
-        <input type="text" id="name">
+        <input type="text" id="name" required>
         <input type="submit" value="enter">
       </form>
 
@@ -46,9 +46,6 @@
       <h3 id="player1-score"></h3>
       <h3 id="player2-name">Player 2</h3>
       <h3 id="player2-score"></h3>
-
-
-
 
 <!-- Letter elements. -->
       <div id="div2">
@@ -69,10 +66,16 @@
     </div>
 
 <!-- Word submit. -->
-    <div>
-      <form id="word-submit">
+    <div id="word-submit">
+      <form id="p1-word-submit">
         <label for="word">Submit your word</label>
-        <input type="text" id="word">
+        <input type="text" id="word" required>
+        <input type="submit" value="save">
+      </form>
+
+      <form id="p2-word-submit">
+        <label for="word">Submit your word</label>
+        <input type="text" id="word" required>
         <input type="submit" value="save">
       </form>
     </div>
