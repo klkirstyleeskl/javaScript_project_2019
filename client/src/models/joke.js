@@ -10,7 +10,7 @@ Joke.prototype.getData = function () {
   const request = new RequestHelper(`https://icanhazdadjoke.com/search?term=${this.word}`);
   request.get()
     .then((data) => {
-      this.text = data.results.map(i => i.joke);
+      this.text = data.results[0].joke;
       PubSub.publish('Joke:joke-loaded', this.text);
           console.log(this.text)
       })
