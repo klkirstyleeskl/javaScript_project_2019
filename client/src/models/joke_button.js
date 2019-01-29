@@ -14,8 +14,8 @@ const handleButtonClick = function () {
   resultParagraph.textContent = 'Button clicked';
 };
 
-const jokeContainer = document.querySelector('#joke-container');
-const jokeView = new JokeView(jokeContainer);
-jokeView.bindEvents();
+// const jokeContainer = document.querySelector('#joke-container');
+// const jokeView = new JokeView(jokeContainer);
+// jokeView.bindEvents();
 
 module.exports = JokeButton;

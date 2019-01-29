@@ -1,4 +1,5 @@
-const PubSub = require('../helpers/pub_sub.js')
+const PubSub = require('../helpers/pub_sub.js');
+const Joke = require('./joke.js');
 
 const Words = function (){
   this.wordlist = []
@@ -61,6 +62,11 @@ Words.prototype.bindEvents = function(){
       PubSub.publish('Words:word1-score', this.wordArr[0].length);
       PubSub.publish('Words:word2-score', this.wordArr[1].length);
     }
+    const joke = new Joke();
+    joke.getData();
+    const jokeView = new JokeView();
+    const jokeElement = jokeView.bindEvents();
+    this.container.appendChild(jokeElement);
     // PubSub.publish('Words:winner', winner);
 
   });

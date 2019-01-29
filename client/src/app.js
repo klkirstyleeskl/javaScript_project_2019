@@ -29,9 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const playerView = new PlayerView();
   playerView.displayPlayers();
 
-  const joke = new Joke();
-  joke.getData();
-
   const player1 = new Player1();
   player1.bindEvents();
   const player2 = new Player2();
@@ -44,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const player2InputFormView = new Player2InputFormView(player2InputForm);
   player2InputFormView.bindEvents();
 
-  
+
 
   const game = new Game();
   game.playCountdown();

@@ -1,7 +1,7 @@
 const PubSub = require('../helpers/pub_sub.js');
 
-const JokeView = function (container) {
-  this.container = container;
+const JokeView = function () {
+
 }
 
 JokeView.prototype.bindEvents = function () {
@@ -14,7 +14,7 @@ JokeView.prototype.bindEvents = function () {
 JokeView.prototype.render = function (joke) {
   const p = document.createElement('p');
   p.textContent = joke;
-  this.container.appendChild(p);
-}
+  return p;
+};
 
 module.exports = JokeView;
