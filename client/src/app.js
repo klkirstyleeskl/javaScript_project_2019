@@ -14,6 +14,7 @@ const PlayerView = require('./views/player_view.js');
 
 const Joke = require('./models/joke.js');
 const JokeView = require('./views/joke_view.js');
+const JokeButton = require('.//models/joke_button.js');
 
 
 const Game = require('./models/game.js')
@@ -50,7 +51,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // const jokeButton = new JokeButton();
   // joke.viewJoke();
-
 
 
 
