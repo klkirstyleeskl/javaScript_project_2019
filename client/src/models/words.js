@@ -62,9 +62,14 @@ Words.prototype.bindEvents = function(){
       PubSub.publish('Words:word1-score', this.wordArr[0].length);
       PubSub.publish('Words:word2-score', this.wordArr[1].length);
     }
-    const joke = new Joke();
-    joke.word = 'cat';
-    joke.getData();
+      const joke = new Joke();
+      joke.word = this.wordArr[0];
+      joke.getData();
+      joke.word = this.wordArr[1];
+      joke.getData();
+
+
+
 
     // PubSub.publish('Words:winner', winner);
 
