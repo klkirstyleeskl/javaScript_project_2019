@@ -135,3 +135,19 @@ h2 {
   flex-direction: row;
   justify-content: space-between;
 }
+
+.number-tile {
+  width: 10.9%;
+  height: 95%;
+  background-color: rgb(31, 113, 244);
+  border: 2px solid white;
+  text-align: center;
+}
+
+.target-tile{
+  width: 10.9%;
+  height: 95%;
+  background-color: rgb(31, 113, 244);
+  border: 2px solid white;
+  text-align: center;
+}

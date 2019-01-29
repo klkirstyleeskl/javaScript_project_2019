@@ -2,50 +2,51 @@ const PubSub = require('../helpers/pub_sub.js')
 
 const Words = function (){
   this.wordlist = []
-  this.word1 = ""
-  this.word2 = ""
   this.selection = ""
   this.round = ""
-  this.word1Validity = ''
-  this.word2Validity = ''
+  this.validity = [];
+  this.wordArr = [];
 }
 
 Words.prototype.bindEvents = function(){
 
-  PubSub.subscribe(`LettersGameView:submitted-word-p1-round-${this.round}`, (event) =>{
-    const wordToCheck = event.detail;
-    this.word1 = wordToCheck;
-    const isWordInDictionary = this.isWord(this.word1);
+  for (let i = 0; i<2;i++){
+    PubSub.subscribe(`LettersGameView:submitted-word-p${i+1}-round-${this.round}`, (event) =>{
 
-    const isWordInSelection = this.isInSelection(this.word1, this.selection)
+      const wordToCheck = event.detail;
+      this.wordArr.push(wordToCheck);
+      const isWordInDictionary = this.isWord(wordToCheck);
+      const isWordInSelection = this.isInSelection(wordToCheck, this.selection)
 
-    if (isWordInDictionary && isWordInSelection) {
-      this.word1Validity = true;
-      console.log(`Word is valid, ${this.word1.length} Points`);
-    } else {
-      this.word1Validity = false;
-      console.log('Word is invalid!');
-    }
-    console.log(this.word1Validity);
+      if (isWordInDictionary && isWordInSelection) {
+        this.validity[i] = true;
+        console.log(`Word is valid, ${wordToCheck.length} Points`);
+      } else {
+        this.validity[i] = false;
+        console.log('Word is invalid!');
+      }
+      console.log(this.validity[i]);
 
-  });
+    });
 
+  }
 
   PubSub.subscribe(`LettersGameView:submitted-word-p2-round-${this.round}`, (event) =>{
-    const wordToCheck = event.detail;
-    this.word2 = wordToCheck;
-    const isWordInDictionary = this.isWord(this.word2);
 
-    const isWordInSelection = this.isInSelection(this.word2, this.selection)
-
-    if (isWordInDictionary && isWordInSelection) {
-      this.word2Validity = true;
-      console.log(`Word is valid, ${this.word2.length} Points`);
-    } else {
-      this.word2Validity = false;
-      console.log('Word is invalid!');
-    }
-    console.log(this.word2Validity);
+    // const wordToCheck = event.detail;
+    // // this.word2 = wordToCheck;
+    // const isWordInDictionary = this.isWord(wordToCheck);
+    //
+    // const isWordInSelection = this.isInSelection(wordToCheck, this.selection)
+    //
+    // if (isWordInDictionary && isWordInSelection) {
+    //   this.validity[1] = true;
+    //   console.log(`Word is valid, ${wordToCheck.length} Points`);
+    // } else {
+    //   this.validity[1] = false;
+    //   console.log('Word is invalid!');
+    // }
+    // console.log(this.validity[1]);
 
     //Once a view has been created the log below will be returned in that view.
     const bestWords = this.bestWords(this.selection);
@@ -53,16 +54,20 @@ Words.prototype.bindEvents = function(){
 
     const winner = this.checkForWinner();
     if (winner == 'player1') {
-      PubSub.publish('Words:word1-score', this.word1.length);
+      PubSub.publish('Words:word1-score', this.wordArr[0].length);
     } else if (winner == 'player2') {
-      PubSub.publish('Words:word2-score', this.word2.length);
+      PubSub.publish('Words:word2-score', this.wordArr[1].length);
     } else if (winner == 'draw-score') {
-      PubSub.publish('Words:word1-score', this.word1.length);
-      PubSub.publish('Words:word2-score', this.word2.length);
+      PubSub.publish('Words:word1-score', this.wordArr[0].length);
+      PubSub.publish('Words:word2-score', this.wordArr[1].length);
     }
     // PubSub.publish('Words:winner', winner);
 
   });
+
+    // console.log(this.bestWords(this.selection));
+  // })
+
 
 }
 
@@ -111,13 +116,13 @@ Words.prototype.bestWords = function(letterSelection){
 }
 
 Words.prototype.checkForWinner = function () {
-  if ((this.word1Validity === true) && ((this.word1.length > this.word2.length) || (this.word2Validity === false))) {
+  if ((this.validity[0] === true) && ((this.wordArr[0].length > this.wordArr[1].length) || (this.validity[1] === false))) {
     return 'player1';
-  } else if ((this.word2Validity === true) && ((this.word2.length > this.word1.length) || (this.word1Validity === false))) {
+  } else if ((this.validity[1] === true) && ((this.wordArr[1].length > this.wordArr[0].length) || (this.validity[0] === false))) {
     return 'player2';
-  } else if ((this.word1Validity === true) && (this.word2Validity === true) && (this.word2.length === this.word1.length)) {
+  } else if ((this.validity[0] === true) && (this.validity[1] === true) && (this.wordArr[1].length === this.wordArr[0].length)) {
     return 'draw-score';
-  } else if ((this.word1Validity === false) && (this.word2Validity === false)) {
+  } else if ((this.validity[0] === false) && (this.validity[1] === false)) {
     return 'draw-no-score';
   }
 };
