@@ -1,19 +1,58 @@
 const PubSub = require('../helpers/pub_sub.js');
-const Letters = require('../models/letters.js');
 
-const LettersGameView = function(wordInputElement, selection, round){
-  this.element = wordInputElement
+const LettersGameView = function(container,selection, round){
+  this.elements = []
   this.lettersToShow = selection
   this.round = round
+  this.container = container
 }
 
 LettersGameView.prototype.showLetters = function () {
 
-    const letterElements = document.querySelectorAll('h2');
-    const temp = this.lettersToShow;
-    letterElements.forEach((letterElement) => {
-      letterElement.textContent = temp.pop();
-    });
+  const lettersContainer = document.createElement('div');
+  lettersContainer.id = "letters";
+
+  this.lettersToShow.forEach( (letter,index) => {
+    const letterTile = document.createElement('div');
+    letterTile.classList.add("letters");
+    letterTile.id = `letter${index+1}`;
+
+    const letterFormat = document.createElement('h2');
+    letterFormat.textContent = letter;
+    letterTile.appendChild(letterFormat);
+    lettersContainer.appendChild(letterTile);
+
+  });
+
+  const wordSubmitContainer = document.createElement('div');
+  wordSubmitContainer.id = "word-submit";
+  for (let i = 0; i<2;i++) {
+    const form = document.createElement('form');
+    form.id = `p${i+1}-word-submit`;
+    const label = document.createElement('label');
+    label.for = "word";
+    label.textContent = "Submit your word";
+
+    const input1 = document.createElement('input');
+    input1.type = "text";
+    input1.id = "word";
+    input1.required=true;
+
+    const input2 = document.createElement('input');
+    input2.type = "submit";
+    input2.value = "save";
+
+    form.appendChild(label);
+    form.appendChild(input1);
+    form.appendChild(input2);
+    wordSubmitContainer.appendChild(form);
+
+    this.elements.push(form);
+
+    this.container.appendChild(lettersContainer);
+    this.container.appendChild(wordSubmitContainer);
+  }
+
 };
 
 
@@ -27,22 +66,36 @@ LettersGameView.prototype.setupEventListener = function () {
       // this.lettersToShow = evt.detail
       this.showLetters();
       const round = this.round
+      let word1;
+      let word2;
 
-      this.element.addEventListener('submit', function(event) {
+      this.elements[0].addEventListener('submit', function(event) {
 
         event.preventDefault();
         const form = event.target;
-        const word = event.target.word.value;
+        word1 = event.target.word.value;
 
-
-        PubSub.publish(`WordInputFormView:submitted-word${round}`, word);
+        form.reset();
 
       });
 
 
-    // });
+      // this.element2.addEventListener('submit', function(event) {
 
+      this.elements[1].addEventListener('submit', function(event) {
+
+        event.preventDefault();
+        const form = event.target;
+        word2 = event.target.word.value;
+        PubSub.publish(`LettersGameView:submitted-word-p1-round-${round}`, word1);
+        PubSub.publish(`LettersGameView:submitted-word-p2-round-${round}`, word2);
+
+        form.reset();
+
+      });
 
 };
+
+
 
 module.exports = LettersGameView;

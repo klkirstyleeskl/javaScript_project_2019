@@ -27,7 +27,6 @@ body {
   height: 95%;
   width: 95%;
   position: relative;
-  /* z-index: 999; */
 }
 
 .seconds-container {
@@ -41,12 +40,14 @@ body {
 
 .seconds {
   background-image: url('clockhand.png');
-  height: 65%;
+  background-size: 79%;
+  background-repeat: no-repeat;
+  background-position: 182px -4px;
+  height: 55%;
   right: 43.5%;
-  bottom: 10%;
+  bottom: 1%;
   position: relative;
   transform-origin: center;
-  /* width: 50%; */
 }
 
 .animate {
@@ -90,11 +91,14 @@ body {
   grid-area: 5/4/5/4;
 }
 
-#div2 {
+#letters {
   display: flex;
   flex-direction: row;
-  grid-area: 6/2/6/5;
+  width: 60%;
+  height: 91px;
   border: 3px solid rgb(31, 113, 244);
+  position: relative;
+  margin: auto;
 }
 
 #shuffle-letters {
@@ -130,4 +134,20 @@ h2 {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.number-tile {
+  width: 10.9%;
+  height: 95%;
+  background-color: rgb(31, 113, 244);
+  border: 2px solid white;
+  text-align: center;
+}
+
+.target-tile{
+  width: 10.9%;
+  height: 95%;
+  background-color: rgb(31, 113, 244);
+  border: 2px solid white;
+  text-align: center;
 }
