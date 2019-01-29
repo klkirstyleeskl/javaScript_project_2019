@@ -1,3 +1,4 @@
+const IndexView = require('./views/index_view.js');
 const WordInputFormView = require('./views/word_input_form_view.js');
 const Letters = require('./models/letters.js');
 
@@ -22,6 +23,10 @@ const Game = require('./models/game.js')
 
 
 document.addEventListener('DOMContentLoaded', () => {
+
+  const lettersElement = document.querySelector('#game-container');
+  const lettersElementView = new IndexView(lettersElement);
+  lettersElementView.createElement();
 
   const startButton = new StartButton();
   startButton.startGame();
