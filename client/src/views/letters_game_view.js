@@ -83,12 +83,16 @@ LettersGameView.prototype.setupEventListener = function () {
       const round = this.round
       let word1;
       let word2;
+      let bestWords;
 
       this.elements[0].addEventListener('submit', function(event) {
 
         event.preventDefault();
         const form = event.target;
         word1 = event.target.word.value;
+        PubSub.subscribe('Words:bestWords', (evt) => {
+        bestWords = evt.detail
+      });
 
         form.reset();
 
@@ -104,6 +108,7 @@ LettersGameView.prototype.setupEventListener = function () {
         word2 = event.target.word.value;
         PubSub.publish(`LettersGameView:submitted-word-p1-round-${round}`, word1);
         PubSub.publish(`LettersGameView:submitted-word-p2-round-${round}`, word2);
+
         const gridElement = document.querySelector('#clock-wrapper');
         const player1Word = document.createElement('h3');
         const player2Word = document.createElement('h3');
@@ -115,6 +120,17 @@ LettersGameView.prototype.setupEventListener = function () {
         gridElement.appendChild(player2Word);
         form.reset();
 
+        const bestWordsDiv = document.createElement('div');
+        bestWordsDiv.setAttribute('id', 'best-words-div');
+
+
+
+        bestWords.forEach((word) => {
+          const bestWordElement = document.createElement('h3');
+          bestWordElement.textContent = word;
+          bestWordsDiv.appendChild(bestWordElement);
+        });
+      
       });
 
 };

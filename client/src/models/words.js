@@ -51,8 +51,7 @@ Words.prototype.bindEvents = function(){
 
     //Once a view has been created the log below will be returned in that view.
     const bestWords = this.bestWords(this.selection);
-    console.log(`The longest words available are: ${bestWords}`);
-
+    PubSub.publish('Words:bestWords', bestWords);
     const winner = this.checkForWinner();
     if (winner == 'player1') {
       PubSub.publish('Words:word1-score', this.wordArr[0].length);
