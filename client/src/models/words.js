@@ -63,8 +63,9 @@ Words.prototype.bindEvents = function(){
       PubSub.publish('Words:word2-score', this.wordArr[1].length);
     }
     const joke = new Joke();
+    joke.word = 'cat';
     joke.getData();
-    
+
     // PubSub.publish('Words:winner', winner);
 
   });
