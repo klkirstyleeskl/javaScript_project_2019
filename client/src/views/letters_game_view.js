@@ -104,7 +104,15 @@ LettersGameView.prototype.setupEventListener = function () {
         word2 = event.target.word.value;
         PubSub.publish(`LettersGameView:submitted-word-p1-round-${round}`, word1);
         PubSub.publish(`LettersGameView:submitted-word-p2-round-${round}`, word2);
-
+        const gridElement = document.querySelector('#clock-wrapper');
+        const player1Word = document.createElement('h3');
+        const player2Word = document.createElement('h3');
+        player1Word.setAttribute('id', 'p1-word-display');
+        player2Word.setAttribute('id', 'p2-word-display');
+        player1Word.textContent = `Player 1 word: ${word1}`;
+        player2Word.textContent = `Player 2 word: ${word2}`
+        gridElement.appendChild(player1Word);
+        gridElement.appendChild(player2Word);
         form.reset();
 
       });

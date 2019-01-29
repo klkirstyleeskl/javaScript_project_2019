@@ -79,12 +79,21 @@ body {
   grid-area: 5/2/5/2;
 }
 
+#p1-word-display {
+  grid-area: 6/2/6/2;
+}
+
+
 #player2-submit {
   grid-area: 4/4/4/6;
 }
 
 #player2-name {
   grid-area: 5/5/5/5;
+}
+
+#p2-word-display {
+  grid-area: 6/4/6/4;
 }
 
 #player2-score {
