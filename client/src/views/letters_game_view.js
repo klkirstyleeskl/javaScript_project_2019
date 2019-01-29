@@ -1,5 +1,5 @@
 const PubSub = require('../helpers/pub_sub.js');
-const JokeView = require('./joke_view.js');
+
 
 const LettersGameView = function(container,selection, round){
   this.elements = []
@@ -62,7 +62,12 @@ LettersGameView.prototype.showLetters = function () {
     this.container.appendChild(wordSubmitContainer);
 
 }
-  
+  PubSub.subscribe('Joke:joke-loaded', (evt) => {
+    const jokeElement = document.createElement('p');
+    console.log(evt);
+    jokeElement.textContent = evt.detail;
+    this.container.appendChild(jokeElement);
+  })
 };
 
 

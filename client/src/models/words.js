@@ -64,9 +64,7 @@ Words.prototype.bindEvents = function(){
     }
     const joke = new Joke();
     joke.getData();
-    const jokeView = new JokeView();
-    const jokeElement = jokeView.bindEvents();
-    this.container.appendChild(jokeElement);
+    
     // PubSub.publish('Words:winner', winner);
 
   });
