@@ -62,4 +62,8 @@ Numbers.prototype.bindEvents = function(){
 
 }
 
+Numbers.prototype.solveGame = function(solutionStringß){
+  
+}
+
 module.exports = Numbers;

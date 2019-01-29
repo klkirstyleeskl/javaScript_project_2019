@@ -48,6 +48,8 @@ Game.prototype.playCountdown = function(){
 
       } else if (rounds[round] === "N") {
 
+        const stringTest = "(10+4)*65"
+        console.log(eval(stringTest));
         console.log('maths round');
         numbers.selection = [];
         numbers.getRandomNumbers();

@@ -18,7 +18,7 @@ NumbersGameView.prototype.showNumbers = function () {
     console.log(this.selection);
     this.selection.forEach( (number, index) => {
       const numberTile = document.createElement('div');
-      numberTile.classList.add('number-tile');
+      numberTile.classList.add('letters');
       numberTile.id = `number${index+1}`;
 
       const numberFormat = document.createElement('h2');
