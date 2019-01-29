@@ -44,10 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const player2InputFormView = new Player2InputFormView(player2InputForm);
   player2InputFormView.bindEvents();
 
-  const jokeContainer = document.querySelector('#joke-container');
-  const jokeView = new JokeView(jokeContainer);
-  jokeView.bindEvents();
-
+  
 
   const game = new Game();
   game.playCountdown();
