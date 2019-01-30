@@ -4,6 +4,7 @@ const NumbersGameView = require('../views/numbers_game_view.js');
 const ConundrumGameView = require('../views/conundrum_view.js')
 const Letters = require('./letters.js');
 const Words = require('./words.js')
+const EndGameView = require('../views/end_game_view.js')
 // const Conundrum = require('./conundrum.js')
 const PlayerView = require('../views/player_view.js');
 const Numbers = require('./numbers.js');
@@ -22,7 +23,7 @@ Game.prototype.playCountdown = function(){
   const numbers = new Numbers();
   // const conundrum = new Conundrum();
 
-  const rounds = ["C","L","N","L","C"];
+  const rounds = ["L","L","L","N","L","C"];
 
   let lettersGameView;
   let conundrumGameView;
@@ -101,7 +102,19 @@ Game.prototype.playCountdown = function(){
       }
 
       else {
-        //Code for calling End Game View
+
+        //Store the latest player information and pass it into the end view.
+        const players = [];
+        players.push(document.querySelector('#player1-name').textContent);
+        players.push(document.querySelector('#player1-score').textContent);
+        players.push(document.querySelector('#player2-name').textContent);
+        players.push(document.querySelector('#player2-score').textContent);
+
+        const gameContainer = document.querySelector('body');
+        gameContainer.innerHTML = '';
+
+        const endGameView = new EndGameView(gameContainer, players);
+        endGameView.setupEventListener();
       }
       round +=1;
 
