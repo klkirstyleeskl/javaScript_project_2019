@@ -9,7 +9,7 @@ IndexView.prototype.createElement = function () {
   const lettersContainer = document.createElement('div');
   lettersContainer.id = "letters";
 
-    const word = 'COONTDOON';
+    const word = 'COUNTDOWN';
 
     for (letter of word){
     const letterTile = document.createElement('div');

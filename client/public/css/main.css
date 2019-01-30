@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 body {
   text-align: center;
-  font-family: sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 #overlay {
@@ -9,10 +9,10 @@ body {
         position: absolute;
         top: 0;
         bottom: 0;
-        background: #999;
+        background: #1f71f4;
         width: 100%;
         height: 100%;
-        opacity: 0.8;
+        opacity: 0.5;
         z-index: 100;
     }
 #popup {
@@ -21,10 +21,10 @@ body {
         top: 50%;
         left: 50%;
         background: #fff;
-        width: 500px;
-        height: 500px;
-        margin-left: -250px; /*Half the value of width to center div*/
-        margin-top: -250px; /*Half the value of height to center div*/
+        width: 600px;
+        height: 600px;
+        margin-left: -300px;
+        margin-top: -250px;
         z-index: 200;
     }
 #popupclose {
@@ -36,9 +36,10 @@ body {
         padding: 10px;
     }
 #button {
-        float: right;
+        grid-area: 1/5/1/5;
         cursor: pointer;
         font-family: 'Roboto', sans-serif;
+        font-weight: bold;
         font-size: 1em;
         text-align: center;
         margin: 10px 0;
@@ -46,13 +47,14 @@ body {
         border-color: #e69900;
         border-radius: 10px;
         border-width: thick;
-        /* grid-area: 1/3/5/3; */
+        width: 50%;
+        height: 60%;
     }
 
 #clock-wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr 350px 1fr 1fr;
-  grid-template-rows: 87.5px 87.5px 87.5px 87.5px 50px 40px 60px;
+  grid-template-rows: 87.5px 87.5px 87.5px 87.5px 100px 80px 60px;
 
 }
 
@@ -111,7 +113,28 @@ body {
 #start-button {
   grid-area: 5/3/5/3;
   text-align: center;
-  margin: 10px 0;
+  margin: 20px 0 0 0;
+  height: 70%;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  font-size: 2em;
+  background-color: #ffdd99;
+  border-color: #e69900;
+  border-radius: 10px;
+  border-width: thick;
+}
+#start-button:hover {
+  grid-area: 5/3/5/3;
+  text-align: center;
+  margin: 40px 0 0 0;
+  height: 100%;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  font-size: 2em;
+  background-color: #ffdd99;
+  border-color: #e69900;
+  border-radius: 10px;
+  border-width: thick;
 }
 
 #result-display {
@@ -200,7 +223,7 @@ h2 {
 }
 
 h3 {
-  margin: 0 5px;
+  margin: 5px 5px;
 }
 
 #word-submit {
