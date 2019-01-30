@@ -70,7 +70,15 @@ body {
   grid-area: 6/3/6/3;
   text-align: center;
   margin: 10px 0;
-  background-color:  #ffad99;
+  background-color: #ffdd99;
+  border-color: #e69900;
+  border-radius: 10px;
+  border-width: thick;
+
+}
+
+#start-button:active{
+  background-color: #ff8000;
 }
 
 #player1-name {
