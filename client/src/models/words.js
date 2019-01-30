@@ -7,6 +7,8 @@ const Words = function (){
   this.round = ""
   this.validity = [];
   this.wordArr = [];
+  this.jumble = ""
+  this.conundrum = ""
 }
 
 Words.prototype.bindEvents = function(){
@@ -34,21 +36,6 @@ Words.prototype.bindEvents = function(){
 
   PubSub.subscribe(`LettersGameView:submitted-word-p2-round-${this.round}`, (event) =>{
 
-    // const wordToCheck = event.detail;
-    // // this.word2 = wordToCheck;
-    // const isWordInDictionary = this.isWord(wordToCheck);
-    //
-    // const isWordInSelection = this.isInSelection(wordToCheck, this.selection)
-    //
-    // if (isWordInDictionary && isWordInSelection) {
-    //   this.validity[1] = true;
-    //   console.log(`Word is valid, ${wordToCheck.length} Points`);
-    // } else {
-    //   this.validity[1] = false;
-    //   console.log('Word is invalid!');
-    // }
-    // console.log(this.validity[1]);
-
     //Once a view has been created the log below will be returned in that view.
     const bestWords = this.bestWords(this.selection);
     console.log(`The longest words available are: ${bestWords}`);
@@ -64,7 +51,7 @@ Words.prototype.bindEvents = function(){
     }
     const joke = new Joke();
     joke.getData();
-    
+
     // PubSub.publish('Words:winner', winner);
 
   });
@@ -130,6 +117,51 @@ Words.prototype.checkForWinner = function () {
     return 'draw-no-score';
   }
 };
+
+Words.prototype.getConundrum = function () {
+
+  const availableWords = [];
+  this.wordlist.forEach( (word) => {
+    if (word.length===9) {
+      availableWords.push(word);
+    }
+  });
+  index = Math.floor(Math.random()*availableWords.length);
+
+  this.conundrum = availableWords[index];
+  let jumbledLetters = this.conundrum.slice(0);
+  jumbledLetters = jumbledLetters.split('');
+    for (var i = jumbledLetters.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = jumbledLetters[i];
+        jumbledLetters[i] = jumbledLetters[j];
+        jumbledLetters[j] = temp;
+    }
+    console.log(this.conundrum);
+
+    this.jumble = jumbledLetters.join('').toUpperCase();
+    console.log(this.jumble);
+}
+
+Words.prototype.bindConundrumEvents = function (){
+
+  PubSub.subscribe('Conundrum:submitted-word-p1', (event) =>{
+    if (event.detail===this.conundrum){
+      PubSub.publish('Words:word1-score',10)
+    } else {
+      PubSub.publish('Words:word1-score',0)
+    }
+  })
+
+  PubSub.subscribe('Conundrum:submitted-word-p2', (event) =>{
+    if (event.detail===this.conundrum){
+      PubSub.publish('Words:word2-score',10)
+    } else {
+      PubSub.publish('Words:word2-score',0)
+    }
+  })
+}
+
 
 Words.prototype.loadWords = function(){
 

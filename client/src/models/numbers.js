@@ -5,6 +5,27 @@ const Numbers = function(){
   this.numbers = this.getNumbers();
   this.target = this.getTarget();
   this.selection = [];
+  this.players = [];
+  this.playerScores = [0,0];
+}
+
+Numbers.prototype.bindEvents = function(){
+
+  PubSub.subscribe("NumbersGameView:submitted-solution-p1",(event)=>{
+    console.log("HERE - player 1");
+    let validity = this.checkSolution(event.detail);
+    console.log(validity);
+  })
+
+  PubSub.subscribe("NumbersGameView:submitted-solution-p2",(event)=>{
+    console.log("HERE - player 2");
+    let validity = this.checkSolution(event.detail);
+    console.log(validity);
+    this.scoreGame();
+    PubSub.publish('Words:word1-score',this.playerScores[0]);
+    PubSub.publish('Words:word2-score',this.playerScores[1]);
+  })
+
 }
 
 Numbers.prototype.getRandomNumbers = function() {
@@ -58,12 +79,103 @@ Numbers.prototype.generateNumber = function(){
   return number;
 }
 
-Numbers.prototype.bindEvents = function(){
 
+Numbers.prototype.checkSolution = function(solutionString){
+
+  let validRoutine = true;
+  const initialCheck = eval(solutionString)
+  if (initialCheck) {
+
+    let numbersArray = solutionString.match(/\d+/g).map(String);
+    numbersArray = numbersArray.sort(function(a, b){return b-a});
+    let numbersOrdered = this.selection.slice(0)
+    numbersOrdered = numbersOrdered.sort(function(a, b){return b-a});
+
+    numbersArray.forEach( (number) => {
+
+      if (numbersOrdered.indexOf(number) <0){
+        validRoutine = false;
+      }
+      numbersOrdered.splice(numbersOrdered.indexOf(number),1)
+    });
+
+  } else {
+    this.players.push(0);
+    return false
+  }
+
+  if (!validRoutine) {
+    this.players.push(0);
+    return false
+  } else {
+    this.players.push(initialCheck);
+    return true
+  }
 }
 
-Numbers.prototype.solveGame = function(solutionStringß){
-  
-}
+Numbers.prototype.scoreGame = function(){
+    const player1distance = Math.abs(this.target-this.players[0]);
+    const player2distance = Math.abs(this.target-this.players[1]);
+    console.log(player1distance);
+    console.log(player2distance);
+
+
+
+    //If player 1 has beat player two then player 2's score should be set equal to 0
+    if (player1distance < player2distance){
+      this.playerScores[1] = 0;
+      if (player1distance===0){
+        this.playerScores[0] = 10;
+      }
+      else if (player1distance<=5){
+        this.playerScores[0] = 7;
+      }
+      else if (player1distance<=5) {
+        this.playerScores[0] = 5;
+      }
+      else {
+        this.playerScores[0] = 0;
+      }
+    }
+
+    else if (player1distance > player2distance){
+      this.playerScores[0] = 0;
+      if (player2distance===0){
+        this.playerScores[1] = 10;
+      }
+      else if (player2distance<=5){
+        this.playerScores[1] = 7;
+      }
+      else if (player2distance<=5) {
+        this.playerScores[1] = 5;
+      }
+      else {
+        this.playerScores[1] = 0;
+      }
+    }
+    else {
+        if (player1distance===0){
+          this.playerScores[0] = 10;
+          this.playerScores[1] = 10;
+        }
+        else if (player1distance<=5){
+          this.playerScores[0] = 7;
+          this.playerScores[1] = 7;
+        }
+        else if (player1distance<=10){
+          this.playerScores[0] = 5;
+          this.playerScores[1] = 5;
+        }
+        else {
+          this.playerScores[0] = 0;
+          this.playerScores[1] = 0;
+        }
+    }
+
+
+    console.log(this.playerScores[0]);
+    console.log(this.playerScores[1]);
+  }
+
 
 module.exports = Numbers;

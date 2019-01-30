@@ -80,7 +80,7 @@ NumbersGameView.prototype.setupEventListener = function () {
 
         event.preventDefault();
         const form = event.target;
-        solution1 = event.target.word.value;
+        solution1 = event.target.number.value;
         form.reset();
 
       });
@@ -89,10 +89,11 @@ NumbersGameView.prototype.setupEventListener = function () {
 
         event.preventDefault();
         const form = event.target;
-        solution2 = event.target.word.value;
+        solution2 = event.target.number.value;
 
-        PubSub.publish(`NumbersGameView:submitted-solution-p1${round}`, solution1);
-        PubSub.publish(`NumbersGameView:submitted-solution-p2${round}`, solution2);
+        console.log(solution1);
+        PubSub.publish("NumbersGameView:submitted-solution-p1", solution1);
+        PubSub.publish(`NumbersGameView:submitted-solution-p2`, solution2);
 
         form.reset();
 
