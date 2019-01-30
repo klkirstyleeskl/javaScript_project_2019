@@ -11,43 +11,42 @@ const Words = function (){
 
 Words.prototype.bindEvents = function(){
 
-  for (let i = 0; i<2;i++){
-    PubSub.subscribe(`LettersGameView:submitted-word-p${i+1}-round-${this.round}`, (event) =>{
-
+  // for (let i = 0; i<2;i++){
+    PubSub.subscribe(`LettersGameView:submitted-word-p1-round-${this.round}`, (event) =>{
+      this.wordArr = [];
       const wordToCheck = event.detail;
-      this.wordArr.push(wordToCheck);
+      this.wordArr.unshift(wordToCheck);
       const isWordInDictionary = this.isWord(wordToCheck);
       const isWordInSelection = this.isInSelection(wordToCheck, this.selection)
 
       if (isWordInDictionary && isWordInSelection) {
-        this.validity[i] = true;
+        this.validity[0] = true;
         console.log(`Word is valid, ${wordToCheck.length} Points`);
       } else {
-        this.validity[i] = false;
+        this.validity[0] = false;
         console.log('Word is invalid!');
       }
-      console.log(this.validity[i]);
+      console.log(this.validity[0]);
 
     });
 
-  }
+  // }
 
   PubSub.subscribe(`LettersGameView:submitted-word-p2-round-${this.round}`, (event) =>{
 
-    // const wordToCheck = event.detail;
-    // // this.word2 = wordToCheck;
-    // const isWordInDictionary = this.isWord(wordToCheck);
-    //
-    // const isWordInSelection = this.isInSelection(wordToCheck, this.selection)
-    //
-    // if (isWordInDictionary && isWordInSelection) {
-    //   this.validity[1] = true;
-    //   console.log(`Word is valid, ${wordToCheck.length} Points`);
-    // } else {
-    //   this.validity[1] = false;
-    //   console.log('Word is invalid!');
-    // }
-    // console.log(this.validity[1]);
+    const wordToCheck = event.detail;
+    this.wordArr.push(wordToCheck);
+    const isWordInDictionary = this.isWord(wordToCheck);
+    const isWordInSelection = this.isInSelection(wordToCheck, this.selection)
+
+    if (isWordInDictionary && isWordInSelection) {
+      this.validity[1] = true;
+      console.log(`Word is valid, ${wordToCheck.length} Points`);
+    } else {
+      this.validity[1] = false;
+      console.log('Word is invalid!');
+    }
+    console.log(this.validity[1]);
 
     //Once a view has been created the log below will be returned in that view.
     const bestWords = this.bestWords(this.selection);
@@ -74,6 +73,7 @@ Words.prototype.bindEvents = function(){
     // PubSub.publish('Words:winner', winner);
 
   });
+
 
     // console.log(this.bestWords(this.selection));
   // })
