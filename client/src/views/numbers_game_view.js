@@ -32,7 +32,7 @@ NumbersGameView.prototype.showNumbers = function () {
 
     //Add the target to the parent container
     const mainWrapper = document.querySelector('#best-words');
-    const targetTile = document.createElement('h3');
+    const targetTile = document.createElement('h4');
     // targetTile.classList.add('target-tile');
     targetTile.textContent = this.target;
 
