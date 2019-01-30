@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
+
 body {
   text-align: center;
   font-family: 'Roboto', sans-serif;
@@ -6,31 +7,32 @@ body {
 }
 
 #overlay {
-        display: none;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        background: #1f71f4;
-        width: 100%;
-        height: 100%;
-        opacity: 0.5;
-        z-index: 100;
-    }
+  display: none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background: #1f71f4;
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+  z-index: 100;
+}
+
 #popup {
-        display: none;
-        position: absolute;
-        box-shadow: 0px 0px 30px 5px rgba(31, 113, 244, 0.8);
-        top: 50%;
-        left: 50%;
-        background: #fff;
-        width: 600px;
-        height: 600px;
-        margin-left: -300px;
-        margin-top: -250px;
-        z-index: 200;
-        border: thick solid #e69900;
-        border-radius: 10px;
-    }
+  display: none;
+  position: absolute;
+  box-shadow: 0px 0px 30px 5px rgba(31, 113, 244, 0.8);
+  top: 50%;
+  left: 50%;
+  background: #fff;
+  width: 600px;
+  height: 600px;
+  margin-left: -300px;
+  margin-top: -250px;
+  z-index: 200;
+  border: thick solid #e69900;
+  border-radius: 10px;
+}
 
 #good-luck {
   margin-top: 30px;
@@ -39,28 +41,33 @@ body {
 }
 
 #popupclose {
-        float: right;
-        padding: 10px;
-        cursor: pointer;
-    }
-    .popupcontent {
-        padding: 10px;
-    }
+  float: right;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.popupcontent {
+  padding: 10px;
+}
+
 #button {
-        grid-area: 1/5/1/5;
-        cursor: pointer;
-        font-family: 'Roboto', sans-serif;
-        font-weight: bold;
-        font-size: 1em;
-        text-align: center;
-        margin: 10px 0;
-        background-color: #ffdd99;
-        border-color: #e69900;
-        border-radius: 10px;
-        border-width: thick;
-        width: 50%;
-        height: 60%;
-    }
+  grid-area: 1/5/1/5;
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  font-size: 1em;
+  text-align: center;
+  margin: 10px 0;
+  background-color: #ffdd99;
+  border: 4px solid #e69900;
+  border-radius: 10px;
+  width: 40%;
+  height: 40%;
+}
+
+#button:focus {
+  outline: 1px solid rgba(255, 255, 255, 0);
+}
 
 #button:hover {
   box-shadow: 0px 0px 30px 5px rgba(31, 113, 244, 0.8);
@@ -72,19 +79,17 @@ body {
   text-align: center;
   margin: 10px 0;
   background-color: #ffdd99;
-  border-color: #e69900;
+  border: 4px solid #e69900;
   border-radius: 10px;
-  border-width: thick;
-  width: 50%;
-  height: 60%;
-    }
+  width: 40%;
+  height: 40%;
+}
 
 #clock-wrapper {
   margin-top: 20px;
   display: grid;
   grid-template-columns: 1fr 1fr 350px 1fr 1fr;
   grid-template-rows: 87.5px 87.5px 87.5px 87.5px 100px 80px 60px;
-
 }
 
 #div1 {
@@ -148,10 +153,14 @@ body {
   font-weight: bold;
   font-size: 2em;
   background-color: #ffdd99;
-  border-color: #e69900;
+  border: 4px solid #e69900;
   border-radius: 10px;
-  border-width: thick;
 }
+
+#start-button:focus {
+  outline: 1px solid rgba(255, 255, 255, 0);
+}
+
 #start-button:hover {
   grid-area: 5/3/5/3;
   text-align: center;
@@ -161,9 +170,7 @@ body {
   font-weight: bold;
   font-size: 2em;
   background-color: #ffdd99;
-  border-color: #e69900;
-  border-radius: 10px;
-  border-width: thick;
+  border: 4px solid #e69900;
 }
 
 #result-display {
@@ -185,11 +192,18 @@ body {
   display: flex;
   justify-content: flex-end;
 }
+
 #p1-input-div input[type='text'] {
   font-size: 20px;
   border-radius: 8px;
-  border: thick solid #e69900;
+  border: 4px solid #e69900;
+  text-align: center;
 }
+
+#p1-input-div input[type='text']:focus {
+  outline: 1px solid rgba(255, 255, 255, 0);
+}
+
 #p1-input-div input[type='submit'] {
   font-weight: bold;
   font-size: 19px;
@@ -197,6 +211,11 @@ body {
   border: 4px solid #e69900;
   border-radius: 8px;
 }
+
+#p1-input-div input[type='submit']:focus {
+  outline: 1px solid rgba(255, 255, 255, 0);
+}
+
 #p1-input-div input[type='submit']:hover {
   box-shadow: 0px 0px 30px 5px rgba(31, 113, 244, 0.8);
   font-size: 19px;
@@ -229,11 +248,18 @@ body {
   display: flex;
   justify-content: flex-start;
 }
+
 #p2-input-div input[type='text'] {
   font-size: 20px;
   border-radius: 8px;
-  border: thick solid #e69900;
+  border: 4px solid #e69900;
+  text-align: center;
 }
+
+#p2-input-div input[type='text']:focus {
+  outline: 1px solid rgba(255, 255, 255, 0);
+}
+
 #p2-input-div input[type='submit'] {
   font-weight: bold;
   font-size: 19px;
@@ -241,6 +267,11 @@ body {
   border: 4px solid #e69900;
   border-radius: 8px;
 }
+
+#p2-input-div input[type='submit']:focus {
+  outline: 1px solid rgba(255, 255, 255, 0);
+}
+
 #p2-input-div input[type='submit']:hover {
   box-shadow: 0px 0px 30px 5px rgba(31, 113, 244, 0.8);
   font-weight: bold;
@@ -311,10 +342,93 @@ h3 {
   margin: 5px 5px;
 }
 
+#p1-word-submit {
+  width: 24%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#p2-word-submit {
+  width: 24%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#p1WordInput {
+  font-size: 1.5em;
+  border-radius: 8px;
+  border: 4px solid #e69900;
+  margin-left: 50px;
+  width: 65%;
+  text-align: center;
+}
+
+#p1WordInput:focus {
+  outline: 1px solid rgba(255, 255, 255, 0);
+}
+
+#p2WordInput {
+  font-size: 1.5em;
+  border-radius: 8px;
+  border: 4px solid #e69900;
+  margin-right: 50px;
+  width: 65%;
+  text-align: center;
+}
+
+#p2WordInput:focus {
+  outline: 1px solid rgba(255, 255, 255, 0);
+}
+
+#p1-word-input-button {
+  font-size: 1.5em;
+  font-weight: bold;
+  border-radius: 8px;
+  border: 4px solid #e69900;
+  background-color: #ffdd99;
+}
+
+#p1-word-input-button:focus {
+  outline: 1px solid rgba(255, 255, 255, 0);
+}
+
+#p1-word-input-button:hover {
+  font-size: 1.5em;
+  font-weight: bold;
+  border-radius: 8px;
+  border: 4px solid #e69900;
+  background-color: #ffdd99;
+  box-shadow: 0px 0px 30px 5px rgba(31, 113, 244, 0.8);
+}
+
+#p2-word-input-button {
+  font-size: 1.5em;
+  font-weight: bold;
+  border-radius: 8px;
+  border: 4px solid #e69900;
+  background-color: #ffdd99;
+}
+
+#p2-word-input-button:focus {
+  outline: 1px solid rgba(255, 255, 255, 0);
+}
+
+#p2-word-input-button:hover {
+  font-size: 1.5em;
+  font-weight: bold;
+  border-radius: 8px;
+  border: 4px solid #e69900;
+  background-color: #ffdd99;
+  box-shadow: 0px 0px 30px 5px rgba(31, 113, 244, 0.8);
+}
+
 #word-submit {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-top: 20px;
 }
 
 .number-tile {
