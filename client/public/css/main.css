@@ -35,6 +35,13 @@ body {
     }
 #button {
         cursor: pointer;
+        color: black;
+        margin: 10px 0;
+        background-color: blue;
+        grid-area: 1/3/5/3;
+
+
+
     }
 
 #clock-wrapper {
