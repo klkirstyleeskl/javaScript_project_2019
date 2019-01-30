@@ -34,6 +34,7 @@ body {
         padding: 10px;
     }
 #button {
+        float: right;
         cursor: pointer;
         color: black;
         margin: 10px 0;
