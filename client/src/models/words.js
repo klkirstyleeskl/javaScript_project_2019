@@ -61,11 +61,27 @@ Words.prototype.bindEvents = function(){
       PubSub.publish('Words:word1-score', this.wordArr[0].length);
       PubSub.publish('Words:word2-score', this.wordArr[1].length);
     }
-      const joke = new Joke();
-      joke.word = this.wordArr[0];
-      joke.getData();
-      joke.word = this.wordArr[1];
-      joke.getData();
+
+    const player1Word = document.querySelector('#p1-word-display');
+    const player2Word = document.querySelector('#p2-word-display');
+    const resultDisplay = document.querySelector('#result-display');
+
+    if (winner == 'player1') {
+      resultDisplay.textContent = `Player 1 Wins`;
+    } else if (winner == 'player2') {
+      resultDisplay.textContent = `Player 2 Wins`;
+    } else if (winner == 'draw-score') {
+      resultDisplay.textContent = `Game is a Draw`;
+    }
+    player1Word.textContent = this.wordArr[0].toUpperCase();
+    player2Word.textContent = this.wordArr[1].toUpperCase();
+
+
+    const joke = new Joke();
+    joke.word = this.wordArr[0];
+    joke.getData();
+    joke.word = this.wordArr[1];
+    joke.getData();
 
 
 
