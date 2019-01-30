@@ -116,10 +116,6 @@ Numbers.prototype.checkSolution = function(solutionString){
 Numbers.prototype.scoreGame = function(){
     const player1distance = Math.abs(this.target-this.players[0]);
     const player2distance = Math.abs(this.target-this.players[1]);
-    console.log(player1distance);
-    console.log(player2distance);
-
-
 
     //If player 1 has beat player two then player 2's score should be set equal to 0
     if (player1distance < player2distance){
@@ -136,9 +132,7 @@ Numbers.prototype.scoreGame = function(){
       else {
         this.playerScores[0] = 0;
       }
-    }
-
-    else if (player1distance > player2distance){
+    } else if (player1distance > player2distance){
       this.playerScores[0] = 0;
       if (player2distance===0){
         this.playerScores[1] = 10;
@@ -152,8 +146,7 @@ Numbers.prototype.scoreGame = function(){
       else {
         this.playerScores[1] = 0;
       }
-    }
-    else {
+    } else {
         if (player1distance===0){
           this.playerScores[0] = 10;
           this.playerScores[1] = 10;
@@ -172,9 +165,6 @@ Numbers.prototype.scoreGame = function(){
         }
     }
 
-
-    console.log(this.playerScores[0]);
-    console.log(this.playerScores[1]);
   }
 
 
