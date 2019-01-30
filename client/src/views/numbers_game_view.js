@@ -12,13 +12,15 @@ NumbersGameView.prototype.showNumbers = function () {
 
     this.container.innerHTML = '';
     const mainContainer = document.createElement('div');
+    mainContainer.setAttribute('id', 'main-numbers-container');
     const numbersContainer = document.createElement('div');
-    mainContainer.classList.id = "letters"
+    numbersContainer.setAttribute('id', 'numbers-container');
+
     //Number tiles to the parent container
     console.log(this.selection);
     this.selection.forEach( (number, index) => {
       const numberTile = document.createElement('div');
-      numberTile.classList.add('letters');
+      numberTile.classList.add('numbers');
       numberTile.id = `number${index+1}`;
 
       const numberFormat = document.createElement('h2');
@@ -26,14 +28,15 @@ NumbersGameView.prototype.showNumbers = function () {
       numberTile.appendChild(numberFormat);
       numbersContainer.appendChild(numberTile);
     });
+    mainContainer.appendChild(numbersContainer);
 
     //Add the target to the parent container
-    const targetTile = document.createElement('div');
-    targetTile.classList.add('target-tile');
+    const mainWrapper = document.querySelector('#best-words');
+    const targetTile = document.createElement('h3');
+    // targetTile.classList.add('target-tile');
     targetTile.textContent = this.target;
 
-    mainContainer.appendChild(numbersContainer);
-    mainContainer.appendChild(targetTile);
+    mainWrapper.appendChild(targetTile);
 
 
     const numberSubmitContainer = document.createElement('div');

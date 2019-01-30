@@ -1,0 +1,35 @@
+#main-numbers-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#numbers-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 60%;
+  margin: 5px auto;
+  border: 3px solid rgb(31, 113, 244);
+}
+
+#best-words h3 {
+  font-size: 48px;
+  border: 3px solid rgb(31, 113, 244);
+  border-radius: 8px;
+  padding: 0 10px 0 10px;
+}
+
+.numbers {
+  width: 16.66%;
+  height: 95%;
+  background-color: rgb(31, 113, 244);
+  border: 2px solid white;
+  text-align: center;
+}
+
+#number-submit {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
