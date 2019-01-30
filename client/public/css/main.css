@@ -67,11 +67,11 @@ body {
   margin: 10px 0;
 }
 
-#player1-submit {
+#player1-name {
   grid-area: 4/1/4/3;
 }
 
-#player1-name {
+#player1-submit {
   grid-area: 5/1/5/1;
 }
 
