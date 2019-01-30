@@ -45,14 +45,15 @@ Game.prototype.playCountdown = function(){
 
         words.bindEvents();
         const gameContainer = document.querySelector('#game-container');
-        gameContainer.innerHTML = '';
-
         const player1Word = document.querySelector('#p1-word-display');
         const player2Word = document.querySelector('#p2-word-display');
         const resultDisplay = document.querySelector('#result-display');
+        const bestWordsDisplay = document.querySelector('#best-words');
+        gameContainer.innerHTML = '';
         player1Word.innerHTML = '';
         player2Word.innerHTML = '';
         resultDisplay.innerHTML = '';
+        bestWordsDisplay.innerHTML = '';
 
 
         //Generate the letters game view
@@ -72,10 +73,12 @@ Game.prototype.playCountdown = function(){
         const player1Word = document.querySelector('#p1-word-display');
         const player2Word = document.querySelector('#p2-word-display');
         const resultDisplay = document.querySelector('#result-display');
+        const bestWordsDisplay = document.querySelector('#best-words');
         gameContainer.innerHTML = '';
         player1Word.innerHTML = '';
         player2Word.innerHTML = '';
         resultDisplay.innerHTML = '';
+        bestWordsDisplay.innerHTML = '';
 
         numbersGameView = new NumbersGameView(gameContainer, selection, target, round);
         numbersGameView.setupEventListener();

@@ -52,6 +52,15 @@ Words.prototype.bindEvents = function(){
     const bestWords = this.bestWords(this.selection);
     console.log(`The longest words available are: ${bestWords}`);
 
+    const resultDisplay = document.querySelector('#result-display');
+
+    const bestWordsDisplay = document.querySelector('#best-words');
+    bestWords.forEach((word) => {
+      const element = document.createElement('h3');
+      element.textContent = word.toUpperCase();
+      bestWordsDisplay.appendChild(element);
+    })
+
     const winner = this.checkForWinner();
     if (winner == 'player1') {
       PubSub.publish('Words:word1-score', this.wordArr[0].length);
@@ -64,15 +73,21 @@ Words.prototype.bindEvents = function(){
 
     const player1Word = document.querySelector('#p1-word-display');
     const player2Word = document.querySelector('#p2-word-display');
-    const resultDisplay = document.querySelector('#result-display');
+    const resultH3 = document.createElement('h3');
 
     if (winner == 'player1') {
-      resultDisplay.textContent = `Player 1 Wins`;
+      resultH3.textContent = `Player 1 Wins`;
     } else if (winner == 'player2') {
-      resultDisplay.textContent = `Player 2 Wins`;
+      resultH3.textContent = `Player 2 Wins`;
     } else if (winner == 'draw-score') {
-      resultDisplay.textContent = `Game is a Draw`;
+      resultH3.textContent = `Game is a Draw`;
     }
+    resultDisplay.appendChild(resultH3);
+
+    const bestWordLength = document.createElement('h3');
+    bestWordLength.textContent = `Best Words - ${bestWords[0].length} Letters:`;
+    resultDisplay.appendChild(bestWordLength);
+
     player1Word.textContent = this.wordArr[0].toUpperCase();
     player2Word.textContent = this.wordArr[1].toUpperCase();
 
