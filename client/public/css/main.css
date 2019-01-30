@@ -163,8 +163,19 @@ h2 {
   font-size: 70px;
   font-weight: normal;
 }
+#p1-word-display{
+  grid-area: 4/3/4/3;
+  font-family: 'Roboto', sans-serif;
+}
+
+#p2-word-display{
+  font-family: 'Roboto', sans-serif;
+}
+
+
 
 #word-submit {
+  font-family: 'Roboto', sans-serif;
   display: flex;
   flex-direction: row;
   justify-content: space-between;

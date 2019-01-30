@@ -32,7 +32,7 @@ LettersGameView.prototype.showLetters = function () {
     form.id = `p${i+1}-word-submit`;
     const label = document.createElement('label');
     label.for = "word";
-    label.textContent = "Submit your word";
+    label.textContent = "Player 1 Submit your word";
 
     const input1 = document.createElement('input');
     input1.type = "text";
@@ -130,7 +130,7 @@ LettersGameView.prototype.setupEventListener = function () {
           bestWordElement.textContent = word;
           bestWordsDiv.appendChild(bestWordElement);
         });
-      
+
       });
 
 };
