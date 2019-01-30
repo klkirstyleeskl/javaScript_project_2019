@@ -13,32 +13,55 @@ const Words = function (){
 
 Words.prototype.bindEvents = function(){
 
-  for (let i = 0; i<2;i++){
-    PubSub.subscribe(`LettersGameView:submitted-word-p${i+1}-round-${this.round}`, (event) =>{
-
+  // for (let i = 0; i<2;i++){
+    PubSub.subscribe(`LettersGameView:submitted-word-p1-round-${this.round}`, (event) =>{
+      this.wordArr = [];
       const wordToCheck = event.detail;
-      this.wordArr.push(wordToCheck);
+      this.wordArr.unshift(wordToCheck);
       const isWordInDictionary = this.isWord(wordToCheck);
       const isWordInSelection = this.isInSelection(wordToCheck, this.selection)
 
       if (isWordInDictionary && isWordInSelection) {
-        this.validity[i] = true;
+        this.validity[0] = true;
         console.log(`Word is valid, ${wordToCheck.length} Points`);
       } else {
-        this.validity[i] = false;
+        this.validity[0] = false;
         console.log('Word is invalid!');
       }
-      console.log(this.validity[i]);
+      console.log(this.validity[0]);
 
     });
 
-  }
+  // }
 
   PubSub.subscribe(`LettersGameView:submitted-word-p2-round-${this.round}`, (event) =>{
+
+    const wordToCheck = event.detail;
+    this.wordArr.push(wordToCheck);
+    const isWordInDictionary = this.isWord(wordToCheck);
+    const isWordInSelection = this.isInSelection(wordToCheck, this.selection)
+
+    if (isWordInDictionary && isWordInSelection) {
+      this.validity[1] = true;
+      console.log(`Word is valid, ${wordToCheck.length} Points`);
+    } else {
+      this.validity[1] = false;
+      console.log('Word is invalid!');
+    }
+    console.log(this.validity[1]);
 
     //Once a view has been created the log below will be returned in that view.
     const bestWords = this.bestWords(this.selection);
     console.log(`The longest words available are: ${bestWords}`);
+
+    const resultDisplay = document.querySelector('#result-display');
+
+    const bestWordsDisplay = document.querySelector('#best-words');
+    bestWords.forEach((word) => {
+      const element = document.createElement('h3');
+      element.textContent = word.toUpperCase();
+      bestWordsDisplay.appendChild(element);
+    })
 
     const winner = this.checkForWinner();
     if (winner == 'player1') {
@@ -49,12 +72,41 @@ Words.prototype.bindEvents = function(){
       PubSub.publish('Words:word1-score', this.wordArr[0].length);
       PubSub.publish('Words:word2-score', this.wordArr[1].length);
     }
+
+    const player1Word = document.querySelector('#p1-word-display');
+    const player2Word = document.querySelector('#p2-word-display');
+    const resultH3 = document.createElement('h3');
+
+    if (winner == 'player1') {
+      resultH3.textContent = `Player 1 Wins`;
+    } else if (winner == 'player2') {
+      resultH3.textContent = `Player 2 Wins`;
+    } else if (winner == 'draw-score') {
+      resultH3.textContent = `Game is a Draw`;
+    }
+    resultDisplay.appendChild(resultH3);
+
+    const bestWordLength = document.createElement('h3');
+    bestWordLength.textContent = `Best Words - ${bestWords[0].length} Letters:`;
+    resultDisplay.appendChild(bestWordLength);
+
+    player1Word.textContent = this.wordArr[0].toUpperCase();
+    player2Word.textContent = this.wordArr[1].toUpperCase();
+
+
     const joke = new Joke();
+    joke.word = this.wordArr[0];
     joke.getData();
+    joke.word = this.wordArr[1];
+    joke.getData();
+
+
+
 
     // PubSub.publish('Words:winner', winner);
 
   });
+
 
     // console.log(this.bestWords(this.selection));
   // })
@@ -148,6 +200,14 @@ Words.prototype.bindConundrumEvents = function (){
   PubSub.subscribe('Conundrum:submitted-word-p1', (event) =>{
     if (event.detail===this.conundrum){
       PubSub.publish('Words:word1-score',10)
+
+      this.conundrum.split('').forEach( (letter,index) => {
+      const letterTile = document.querySelector(`#letter${index+1}`)
+      letterTile.childNodes[0].textContent = letter.toUpperCase();
+      });
+
+
+
     } else {
       PubSub.publish('Words:word1-score',0)
     }
@@ -156,6 +216,10 @@ Words.prototype.bindConundrumEvents = function (){
   PubSub.subscribe('Conundrum:submitted-word-p2', (event) =>{
     if (event.detail===this.conundrum){
       PubSub.publish('Words:word2-score',10)
+      this.conundrum.split('').forEach( (letter,index) => {
+      const letterTile = document.querySelector(`#letter${index+1}`)
+      letterTile.childNodes[0].textContent = letter.toUpperCase();
+      });
     } else {
       PubSub.publish('Words:word2-score',0)
     }
