@@ -37,19 +37,29 @@ ConundrumGameView.prototype.showLetters = function () {
   input1.type = "text";
   input1.id = "word";
   input1.required=true;
-  form.appendChild(input1)
 
-  for (let i = 0; i<2;i++) {
+  // for (let i = 0; i<2;i++) {
 
-    const input = document.createElement('input');
-    input.type = "submit";
-    input.value = "save";
-    input.id = `p${i+1}`
-    this.elements.push(input);
+    const inputP1 = document.createElement('input');
+    inputP1.type = "submit";
+    inputP1.value = "P1 submit";
+    inputP1.id = `p1`;
+
+    const inputP2 = document.createElement('input');
+    inputP2.type = "submit";
+    inputP2.value = "P2 submit";
+    inputP2.id = `p2`;
+
+    form.appendChild(inputP1);
+    form.appendChild(input1)
+    form.appendChild(inputP2);
+
+
+    this.elements.push(inputP1);
+    this.elements.push(inputP2);
 
     // form.appendChild(input1);
-    form.appendChild(input);
-  }
+  // }
 
   wordSubmitContainer.appendChild(form);
 
@@ -77,6 +87,7 @@ ConundrumGameView.prototype.setupEventListener = function () {
       this.showLetters();
       const round = this.round
       let word1;
+      let conundrumForm = document.querySelector('#p-word-submit');
 
       this.elements[0].addEventListener('click', function(event) {
 
@@ -89,6 +100,7 @@ ConundrumGameView.prototype.setupEventListener = function () {
 
         let p1Button = document.querySelector('#p1')
         p1Button.disabled = true;
+        
       });
       // this.element2.addEventListener('submit', function(event) {
 

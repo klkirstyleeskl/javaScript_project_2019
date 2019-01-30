@@ -104,6 +104,8 @@ LettersGameView.prototype.setupEventListener = function () {
       const round = this.round
       let word1;
       let word2;
+      let p1WordSubmit = document.querySelector('#p1-word-submit');
+      let p2WordSubmit = document.querySelector('#p2-word-submit');
 
       this.elements[0].addEventListener('submit', function(event) {
         console.log(event);
@@ -112,6 +114,7 @@ LettersGameView.prototype.setupEventListener = function () {
         word1 = event.target.p1WordInput.value;
 
         form.reset();
+        p1WordSubmit.innerHTML = '';
 
       });
 
@@ -127,6 +130,7 @@ LettersGameView.prototype.setupEventListener = function () {
         PubSub.publish(`LettersGameView:submitted-word-p2-round-${round}`, word2);
 
         form.reset();
+        p2WordSubmit.innerHTML = '';
 
       });
 

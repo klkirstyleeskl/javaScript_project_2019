@@ -29,8 +29,91 @@
   text-align: center;
 }
 
+#p1-number-submit {
+  width: 27%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#p2-number-submit {
+  width: 27%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#p1NumberInput {
+  font-size: 1.5em;
+  border-radius: 8px;
+  border: 4px solid #e69900;
+  margin-left: 50px;
+  width: 68%;
+  text-align: center;
+}
+
+#p1NumberInput:focus {
+  outline: 1px solid rgba(255, 255, 255, 0);
+}
+
+#p2NumberInput {
+  font-size: 1.5em;
+  border-radius: 8px;
+  border: 4px solid #e69900;
+  margin-right: 50px;
+  width: 68%;
+  text-align: center;
+}
+
+#p2NumberInput:focus {
+  outline: 1px solid rgba(255, 255, 255, 0);
+}
+
+#p1-number-input-button {
+  font-size: 1.5em;
+  font-weight: bold;
+  border-radius: 8px;
+  border: 4px solid #e69900;
+  background-color: #ffdd99;
+}
+
+#p1-number-input-button:focus {
+  outline: 1px solid rgba(255, 255, 255, 0);
+}
+
+#p1-number-input-button:hover {
+  font-size: 1.5em;
+  font-weight: bold;
+  border-radius: 8px;
+  border: 4px solid #e69900;
+  background-color: #ffdd99;
+  box-shadow: 0px 0px 30px 5px rgba(31, 113, 244, 0.8);
+}
+
+#p2-number-input-button {
+  font-size: 1.5em;
+  font-weight: bold;
+  border-radius: 8px;
+  border: 4px solid #e69900;
+  background-color: #ffdd99;
+}
+
+#p2-number-input-button:focus {
+  outline: 1px solid rgba(255, 255, 255, 0);
+}
+
+#p2-number-input-button:hover {
+  font-size: 1.5em;
+  font-weight: bold;
+  border-radius: 8px;
+  border: 4px solid #e69900;
+  background-color: #ffdd99;
+  box-shadow: 0px 0px 30px 5px rgba(31, 113, 244, 0.8);
+}
+
 #number-submit {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-top: 20px;
 }
