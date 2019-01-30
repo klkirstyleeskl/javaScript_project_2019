@@ -33,8 +33,7 @@ body {
     .popupcontent {
         padding: 10px;
     }
-#instruction-button {
-        
+#button {
         cursor: pointer;
     }
 
