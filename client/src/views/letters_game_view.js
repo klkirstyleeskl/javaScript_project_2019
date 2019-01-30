@@ -50,14 +50,6 @@ LettersGameView.prototype.showLetters = function () {
 
     this.elements.push(form);
 
-    // const jokeContainer = document.querySelector('#joke-container');
-
-
-    // <!-- <div id="dictionary-corner">
-    //   <button type="button" id="joke-button">Press for surprise</button>
-    //   <div id="joke-container">
-    //   </div></div> -->
-
     this.container.appendChild(lettersContainer);
     this.container.appendChild(wordSubmitContainer);
 

@@ -66,6 +66,8 @@ EndGameView.prototype.generateHighScoreTable = function () {
   headerRow.appendChild(scoreHeader);
   leaderBoardContainer.appendChild(headerRow);
 
+  this.leaderboard.sort(function(a, b){return b.score - a.score});
+
   this.leaderboard.forEach((row) =>{
     const dataRow = document.createElement('TR');
 
@@ -85,6 +87,15 @@ EndGameView.prototype.generateHighScoreTable = function () {
 
 EndGameView.prototype.setupEventListener = function() {
   this.generateFinalScoresTable();
+
+  this.request
+  .post({name: this.players[0], score: this.players[1]})
+  .catch((err) => console.error(err));
+
+  this.request
+  .post({name: this.players[2], score: this.players[3]})
+  .catch((err) => console.error(err));
+
   this.request
   .get()
   .then((leaderBoard) => {

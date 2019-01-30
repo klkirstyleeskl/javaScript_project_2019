@@ -23,7 +23,7 @@ Game.prototype.playCountdown = function(){
   const numbers = new Numbers();
   // const conundrum = new Conundrum();
 
-  const rounds = ["L","L","L","N","L","C"];
+  const rounds = ["L","E","L","N","L","C"];
 
   let lettersGameView;
   let conundrumGameView;
@@ -55,6 +55,9 @@ Game.prototype.playCountdown = function(){
         const player2Word = document.querySelector('#p2-word-display');
         const resultDisplay = document.querySelector('#result-display');
         const bestWordsDisplay = document.querySelector('#best-words');
+        PubSub.unsubscribe('Joke:joke-loaded', (event)=>{
+          event.detail='';
+        })
         gameContainer.innerHTML = '';
         player1Word.innerHTML = '';
         player2Word.innerHTML = '';
