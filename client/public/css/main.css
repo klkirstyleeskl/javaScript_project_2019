@@ -126,8 +126,8 @@ body {
 #start-button:hover {
   grid-area: 5/3/5/3;
   text-align: center;
-  margin: 40px 0 0 0;
-  height: 100%;
+  margin: 20px 0 0 0;
+  box-shadow: 0px 0px 30px 5px rgba(31, 113, 244, 0.8);
   font-family: 'Roboto', sans-serif;
   font-weight: bold;
   font-size: 2em;
@@ -151,8 +151,21 @@ body {
   flex-wrap: wrap;
 }
 
-#player1-submit {
-  grid-area: 4/1/4/3;
+#p1-input-div {
+  grid-area: 6/1/6/1;
+  display: flex;
+  justify-content: flex-end;
+}
+#p1-input-div input[type='text'] {
+  font-size: 20px;
+  border-radius: 8px;
+  border: thick solid #e69900;
+}
+#p1-input-div input[type='submit'] {
+  font-weight: bold;
+  background-color: #ffdd99;
+  border: 4px solid #e69900;
+  border-radius: 8px;
 }
 
 #player1-name {
@@ -173,8 +186,21 @@ body {
   font-size: 2em;
 }
 
-#player2-submit {
-  grid-area: 4/4/4/6;
+#p2-input-div {
+  grid-area: 6/5/6/5;
+  display: flex;
+  justify-content: flex-start;
+}
+#p2-input-div input[type='text'] {
+  font-size: 20px;
+  border-radius: 8px;
+  border: thick solid #e69900;
+}
+#p2-input-div input[type='submit'] {
+  font-weight: bold;
+  background-color: #ffdd99;
+  border: 4px solid #e69900;
+  border-radius: 8px;
 }
 
 #player2-name {

@@ -9,6 +9,8 @@ const Player1InputFormView = function(form) {
 Player1InputFormView.prototype.bindEvents = function () {
   this.form.addEventListener('submit', (evt) => {
     this.handleSubmit(evt);
+    const p1Submit = document.querySelector('#p1-input-div');
+    p1Submit.innerHTML = '';
   });
 };
 
