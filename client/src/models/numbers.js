@@ -7,17 +7,18 @@ const Numbers = function(){
   this.selection = [];
   this.players = [];
   this.playerScores = [0,0];
+  this.round = 0;
 }
 
 Numbers.prototype.bindEvents = function(){
 
-  PubSub.subscribe("NumbersGameView:submitted-solution-p1",(event)=>{
+  PubSub.subscribe(`NumbersGameView:submitted-solution-p1-${this.round}`,(event)=>{
     console.log("HERE - player 1");
     let validity = this.checkSolution(event.detail);
     console.log(validity);
   })
 
-  PubSub.subscribe("NumbersGameView:submitted-solution-p2",(event)=>{
+  PubSub.subscribe(`NumbersGameView:submitted-solution-p2-${this.round}`,(event)=>{
     console.log("HERE - player 2");
     let validity = this.checkSolution(event.detail);
     console.log(validity);
@@ -83,7 +84,13 @@ Numbers.prototype.generateNumber = function(){
 Numbers.prototype.checkSolution = function(solutionString){
 
   let validRoutine = true;
-  const initialCheck = eval(solutionString)
+  let initialCheck;
+  try {
+    initialCheck = eval(solutionString)
+
+  } catch(err) {
+    initialCheck = false
+  }
   if (initialCheck) {
 
     let numbersArray = solutionString.match(/\d+/g).map(String);
