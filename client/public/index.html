@@ -6,7 +6,34 @@
     <script src="./js/bundle.js"></script>
     <link rel="stylesheet" href="./css/main.css">
   </head>
-  <body>
+    <button id="instruction-button">Instructions</button>
+    <div id="overlay"></div>
+    <div id="popup">
+      <div class="popupcontrols">
+          <span id="popupclose">X</span>
+      </div>
+      <div class="popupcontent">
+          <h1>How to play</h1>
+          <p>Insert Instructions here on how to play Countdown</p>
+      </div>
+</div>
+<script type="text/javascript">
+    // Initialize Variables
+    var closePopup = document.getElementById("popupclose");
+    var overlay = document.getElementById("overlay");
+    var popup = document.getElementById("popup");
+    var button = document.getElementById("button");
+    // Close Popup Event
+    closePopup.onclick = function() {
+        overlay.style.display = 'none';
+        popup.style.display = 'none';
+    };
+    // Show Overlay and Popup
+    button.onclick = function() {
+        overlay.style.display = 'block';
+        popup.style.display = 'block';
+    }
+</script>
 
     <div id="clock-wrapper">
       <!-- Clock element -->
