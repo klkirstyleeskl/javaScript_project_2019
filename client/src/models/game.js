@@ -30,6 +30,8 @@ Game.prototype.playCountdown = function(){
   let wordInputForm1
   let wordInputForm2
   let inputDiv;
+  // let target = document.querySelector('#target');
+
   // const startButton = document.querySelector('#start-button');
   // startButton.addEventListener('click', function() {
 
@@ -37,6 +39,7 @@ Game.prototype.playCountdown = function(){
   button.addEventListener('click', function(event) {
 
       if (rounds[round] === "L") {
+
 
         console.log('round loop');
 
@@ -57,7 +60,9 @@ Game.prototype.playCountdown = function(){
         player2Word.innerHTML = '';
         resultDisplay.innerHTML = '';
         bestWordsDisplay.innerHTML = '';
-
+        // if (target) {
+        //   target.innerHTML = '';
+        // }
 
         //Generate the letters game view
         lettersGameView = new LettersGameView(gameContainer, selection,round);
@@ -95,7 +100,15 @@ Game.prototype.playCountdown = function(){
         console.log(jumble);
 
         const gameContainer = document.querySelector('#game-container');
+        const player1Word = document.querySelector('#p1-word-display');
+        const player2Word = document.querySelector('#p2-word-display');
+        const resultDisplay = document.querySelector('#result-display');
+        const bestWordsDisplay = document.querySelector('#best-words');
         gameContainer.innerHTML = '';
+        player1Word.innerHTML = '';
+        player2Word.innerHTML = '';
+        resultDisplay.innerHTML = '';
+        bestWordsDisplay.innerHTML = '';
 
         conundrumGameView = new ConundrumGameView(gameContainer, jumble, answer);
         conundrumGameView.setupEventListener();

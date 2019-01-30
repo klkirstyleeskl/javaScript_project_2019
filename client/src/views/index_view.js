@@ -27,5 +27,4 @@ IndexView.prototype.createElement = function () {
 };
 
 
-
 module.exports = IndexView;
