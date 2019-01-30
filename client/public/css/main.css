@@ -18,6 +18,7 @@ body {
 #popup {
         display: none;
         position: absolute;
+        box-shadow: 0px 0px 30px 5px rgba(31, 113, 244, 0.8);
         top: 50%;
         left: 50%;
         background: #fff;
@@ -26,7 +27,16 @@ body {
         margin-left: -300px;
         margin-top: -250px;
         z-index: 200;
+        border: thick solid #e69900;
+        border-radius: 10px;
     }
+
+#good-luck {
+  margin-top: 30px;
+  font-size: 3em;
+  color: rgb(31, 113, 244);
+}
+
 #popupclose {
         float: right;
         padding: 10px;
@@ -51,7 +61,25 @@ body {
         height: 60%;
     }
 
+#button:hover {
+  box-shadow: 0px 0px 30px 5px rgba(31, 113, 244, 0.8);
+  grid-area: 1/5/1/5;
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  font-size: 1em;
+  text-align: center;
+  margin: 10px 0;
+  background-color: #ffdd99;
+  border-color: #e69900;
+  border-radius: 10px;
+  border-width: thick;
+  width: 50%;
+  height: 60%;
+    }
+
 #clock-wrapper {
+  margin-top: 20px;
   display: grid;
   grid-template-columns: 1fr 1fr 350px 1fr 1fr;
   grid-template-rows: 87.5px 87.5px 87.5px 87.5px 100px 80px 60px;
@@ -163,6 +191,15 @@ body {
 }
 #p1-input-div input[type='submit'] {
   font-weight: bold;
+  font-size: 19px;
+  background-color: #ffdd99;
+  border: 4px solid #e69900;
+  border-radius: 8px;
+}
+#p1-input-div input[type='submit']:hover {
+  box-shadow: 0px 0px 30px 5px rgba(31, 113, 244, 0.8);
+  font-size: 19px;
+  font-weight: bold;
   background-color: #ffdd99;
   border: 4px solid #e69900;
   border-radius: 8px;
@@ -198,6 +235,15 @@ body {
 }
 #p2-input-div input[type='submit'] {
   font-weight: bold;
+  font-size: 19px;
+  background-color: #ffdd99;
+  border: 4px solid #e69900;
+  border-radius: 8px;
+}
+#p2-input-div input[type='submit']:hover {
+  box-shadow: 0px 0px 30px 5px rgba(31, 113, 244, 0.8);
+  font-weight: bold;
+  font-size: 19px;
   background-color: #ffdd99;
   border: 4px solid #e69900;
   border-radius: 8px;
