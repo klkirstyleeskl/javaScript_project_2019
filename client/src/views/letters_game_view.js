@@ -82,7 +82,7 @@ LettersGameView.prototype.showLetters = function () {
     this.container.appendChild(lettersContainer);
     this.container.appendChild(wordSubmitContainer);
 
-}
+
   PubSub.subscribe(`Joke:joke-loaded-${this.round}`, (evt) => {
     const jokeElement = document.createElement('p');
     console.log(evt);
