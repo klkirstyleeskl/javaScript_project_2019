@@ -20,10 +20,12 @@ Game.prototype.playCountdown = function(){
   words.loadWords();
 
   const letters = new Letters();
-  const numbers = new Numbers();
   // const conundrum = new Conundrum();
 
-  const rounds = ["L","L","N","L","N","C","E"];
+
+  const rounds = ["L","L","N","C","E"];
+
+
 
   let lettersGameView;
   let conundrumGameView;
@@ -70,6 +72,8 @@ Game.prototype.playCountdown = function(){
 
       } else if (rounds[round] === "N") {
 
+        numbers = new Numbers();
+        numbers.round = round
         console.log('maths round');
         numbers.selection = [];
         numbers.getRandomNumbers();

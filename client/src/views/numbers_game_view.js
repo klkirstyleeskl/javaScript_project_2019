@@ -120,8 +120,8 @@ NumbersGameView.prototype.setupEventListener = function () {
         solution2 = event.target.p2NumberInput.value;
 
         console.log(solution1);
-        PubSub.publish("NumbersGameView:submitted-solution-p1", solution1);
-        PubSub.publish(`NumbersGameView:submitted-solution-p2`, solution2);
+        PubSub.publish(`NumbersGameView:submitted-solution-p1-${round}`, solution1);
+        PubSub.publish(`NumbersGameView:submitted-solution-p2-${round}`, solution2);
 
         form.reset();
 

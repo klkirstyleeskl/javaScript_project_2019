@@ -95,6 +95,7 @@ Words.prototype.bindEvents = function(){
 
 
     const joke = new Joke();
+    joke.round = this.round;
     joke.word = this.wordArr[0];
     joke.getData();
     joke.word = this.wordArr[1];
